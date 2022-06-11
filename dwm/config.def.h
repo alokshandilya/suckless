@@ -158,12 +158,43 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
+
+static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+
+static const char *brupcmd[] = { "brightnessctl", "s", "1%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "s", "1%-", NULL };
+
+static const char *browsercmd[] = { "./.config/scripts/brave-launcher", NULL };
+static const char *filemanagercmd[] = { "/usr/bin/thunar", NULL };
+static const char *codecmd[] = { "/usr/bin/code", NULL };
+static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
+static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
+// static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", NULL };
+
+static const char *bpytop[] = { TERMINAL, "-e", "bpytop", NULL };
+
+static const char *printscr_full[] = { "spectacle", NULL };
+static const char *lockscreen[] = { "betterlockscreen", "-l", "blur", NULL };
+// static const char *poweroffcmd[] = { "poweroff", NULL };
+// static const char *rebootcmd[] =  { "systemctl", "reboot", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = filemanagercmd } },
+	{ MODKEY,                       XK_v,      spawn,          {.v = codecmd } },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = volume_control } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = ranger } },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = bpytop } },
+	{ 0,                            XK_Print,  spawn,          {.v = printscr_full } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lockscreen } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -171,8 +202,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
-	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
+	{ MODKEY|ControlMask,           XK_h,      setcfact,       {.f = +0.25} },
+	{ MODKEY|ControlMask,           XK_l,      setcfact,       {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
@@ -217,6 +248,18 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ControlMask,           XK_q,      quit,           {0} },
+
+	{ 0,	XF86XK_AudioMute,		spawn,		{.v = mutecmd } },
+	{ 0,	XF86XK_AudioLowerVolume,	spawn,		{.v = voldowncmd } },
+	{ 0,	XF86XK_AudioRaiseVolume,	spawn,		{.v = volupcmd } },
+	{ 0,	XF86XK_MonBrightnessUp,		spawn,		{.v = brupcmd} },
+	{ 0,	XF86XK_MonBrightnessDown,	spawn,		{.v = brdowncmd} },        
+
+	// for keyboard with no media keys (some doen't even have function key...)
+	{ MODKEY|ControlMask,		XK_h,		spawn,		{.v = voldowncmd } },
+	{ MODKEY|ControlMask,		XK_l,		spawn,		{.v = volupcmd } },
+	{ MODKEY|ControlMask,		XK_x,		spawn,		{.v = brupcmd} },
+	{ MODKEY|ControlMask,		XK_z,		spawn,		{.v = brdowncmd } },
 };
 
 /* button definitions */
