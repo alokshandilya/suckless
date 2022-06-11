@@ -31,12 +31,12 @@ static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "FontAw
                                "Twemoji:size=10:antialias=true:autohint=true"};
 static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
-static char normfgcolor[]           = "#bbbbbb";
-static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#005577";
-static char selbgcolor[]            = "#005577";
+static char normbgcolor[]           = "#1d2021";
+static char normbordercolor[]       = "#504945";
+static char normfgcolor[]           = "#D3BD97";
+static char selfgcolor[]            = "#1d2021";
+static char selbordercolor[]        = "#7DAEA3"; // used for dmenu too
+static char selbgcolor[]            = "#7DAEA3";
 static char termcol0[] = "#000000"; /* black   */
 static char termcol1[] = "#ff0000"; /* red     */
 static char termcol2[] = "#33ff00"; /* green   */
