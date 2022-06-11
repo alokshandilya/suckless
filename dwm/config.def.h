@@ -1,10 +1,18 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
+/* Constants : Using preprocessor */
+#define TERMINAL "st"
+#define TERMCLASS "St"
+#define BROWSER "brave"
+#define BROWSERCLASS "Brave-browser"
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayonleft = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
@@ -78,13 +86,25 @@ static const char *const autostart[] = {
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+    /*  xprop(1):
+     *  WM_CLASS(STRING) = instance, class
+     *  WM_NAME(STRING) = title
+     */
+    /* class                 instance    title       tags mask     switchtotag      isfloating   monitor */
+    { "Gimp",                NULL,       NULL,       1 << 5,       1,               0,           0 },
+    { "vlc",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
+    { "mpv",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
+    { "firefox",             NULL,       NULL,       1 << 0,       1,               0,           0 },
+    { BROWSERCLASS,          NULL,       NULL,       1 << 0,       1,               0,           0 },
+    { "Code",                NULL,       NULL,       1 << 1,       1,               0,           0 },
+    { "jetbrains-idea-ce",   NULL,       NULL,       1 << 1,       1,               0,           0 },
+    { "Emacs",               NULL,       NULL,       1 << 1,       1,               0,           0 },
+    /* { TERMCLASS,             NULL,       NULL,       1 << 1,       1,               0,           0 }, */
+    { "GitHub Desktop",      NULL,       NULL,       1 << 2,       1,               0,           0 },
+    { "Rhythmbox",           NULL,       NULL,       1 << 3,       1,               0,           0 },
+    { "Mailspring",          NULL,       NULL,       1 << 6,       1,               0,           0 },
+    { "TelegramDesktop",     NULL,       NULL,       1 << 6,       1,               0,           0 },
+    { "Soffice",             NULL,       NULL,       1 << 4,       1,               0,           0 },
 };
 
 /* layout(s) */
@@ -94,10 +114,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+    /* symbol     arrange function */
+    { "[]=",      tile },    /* first entry is default */
+    { "><>",      NULL },    /* no layout function means floating behavior */
+    { "[M]",      monocle },
 };
 
 /* key definitions */
