@@ -566,9 +566,8 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
-		// TODO else if (ev->x > selmon->ww - (int)TEXTW(stext) - getsystraywidth())
 		/* 2px right padding */
-		else if (ev->x > selmon->ww - TEXTW(stext) + lrpad - 2)
+		else if (ev->x > selmon->ww - TEXTW(stext) + lrpad - (getsystraywidth() + 2))
 			click = ClkStatusText;
 		else {
 			x += blw;
@@ -1112,8 +1111,9 @@ drawbar(Monitor *m)
 					}
 					remainder--;
 				}
-				drw_text(drw, x, 0, tabw, bh, lrpad / 2, c->name, 0);
-				x += tabw;
+				drw_text(drw, x, 0, tabw, bh, lrpad / 2 + (c->icon ? c->icw + ICONSPACING : 0), c->name, 0);
+				if (c->icon) drw_pic(drw, x + lrpad / 2, (bh - c->ich) / 2, c->icw, c->ich, c->icon);
+                                x += tabw;
 			}
 		} else {
 			drw_setscheme(drw, scheme[SchemeNorm]);
