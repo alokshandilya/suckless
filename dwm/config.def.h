@@ -27,8 +27,8 @@ static const int topbar             = 1;     /* 0 means bottom bar */
 #define ICONSIZE 18   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 
-static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "FontAwesome:size=10",
-                               "Twemoji:size=10:antialias=true:autohint=true"};
+static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "FontAwesome:size=11",
+                               "Twemoji:size=11:antialias=true:autohint=true"};
 static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 
 static char normbgcolor[]           = "#1d2021";
