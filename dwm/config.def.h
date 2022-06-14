@@ -115,6 +115,7 @@ static const Rule rules[] = {
     { "Mailspring",          NULL,       NULL,       1 << 6,       1,               0,           0 },
     { "TelegramDesktop",     NULL,       NULL,       1 << 6,       1,               0,           0 },
     { "Soffice",             NULL,       NULL,       1 << 4,       1,               0,           0 },
+    { "okular",              NULL,       NULL,       1 << 4,       1,               0,           0 },
 };
 
 /* layout(s) */
