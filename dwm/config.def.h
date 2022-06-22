@@ -176,7 +176,7 @@ static const char *browsercmd[] = { "./.config/scripts/brave-launcher", NULL };
 static const char *filemanagercmd[] = { "/usr/bin/thunar", NULL };
 static const char *codecmd[] = { "/usr/bin/code", NULL };
 static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
-static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
+// static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
 // static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", NULL };
 
 static const char *bpytop[] = { TERMINAL, "-e", "bpytop", NULL };
@@ -197,10 +197,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = filemanagercmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = codecmd } },
 	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = volume_control } },
-	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = ranger } },
+	// { MODKEY|ShiftMask,             XK_e,      spawn,          {.v = ranger } },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = bpytop } },
 	{ 0,                            XK_Print,  spawn,          {.v = printscr_full } },
 	{ MODKEY|ControlMask,           XK_l,      spawn,          {.v = lockscreen } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("emacsclient -c -a 'emacs' --eval '(dashboard-refresh-buffer)'") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstackvis,  {.i = -1 } },
