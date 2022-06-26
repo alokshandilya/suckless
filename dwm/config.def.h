@@ -27,16 +27,16 @@ static const int topbar             = 1;     /* 0 means bottom bar */
 #define ICONSIZE 18   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 
-static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "FontAwesome:size=11",
-                               "Twemoji:size=11:antialias=true:autohint=true"};
+static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=12",
+                               "Twemoji:size=11:antialias=true:autohint=true" };
 static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 
 static char normbgcolor[]           = "#1d2021";
 static char normbordercolor[]       = "#504945";
 static char normfgcolor[]           = "#D3BD97";
-static char selfgcolor[]            = "#1d2021";
-static char selbordercolor[]        = "#7DAEA3"; // used for dmenu too
-static char selbgcolor[]            = "#7DAEA3";
+static char selfgcolor[]            = "#89B482";
+static char selbordercolor[]        = "#89B482"; // used for dmenu too
+static char selbgcolor[]            = "#1d2021";
 static char termcol0[] = "#000000"; /* black   */
 static char termcol1[] = "#ff0000"; /* red     */
 static char termcol2[] = "#33ff00"; /* green   */
@@ -93,7 +93,9 @@ static const char *const autostart[] = {
 
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+// static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *alttags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
     /*  xprop(1):
@@ -238,7 +240,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -263,11 +265,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ControlMask,           XK_q,      quit,           {0} },
 
-	{ 0,	XF86XK_AudioMute,		spawn,		{.v = mutecmd } },
-	{ 0,	XF86XK_AudioLowerVolume,	spawn,		{.v = voldowncmd } },
-	{ 0,	XF86XK_AudioRaiseVolume,	spawn,		{.v = volupcmd } },
-	{ 0,	XF86XK_MonBrightnessUp,		spawn,		{.v = brupcmd} },
-	{ 0,	XF86XK_MonBrightnessDown,	spawn,		{.v = brdowncmd} },        
+	{ 0,	XF86XK_AudioMute,          spawn,     {.v = mutecmd } },
+	{ 0,	XF86XK_AudioLowerVolume,   spawn,     {.v = voldowncmd } },
+	{ 0,	XF86XK_AudioRaiseVolume,   spawn,     {.v = volupcmd } },
+	{ 0,	XF86XK_MonBrightnessUp,    spawn,     {.v = brupcmd} },
+	{ 0,	XF86XK_MonBrightnessDown,  spawn,     {.v = brdowncmd} },
 
 	// for keyboard with no media keys (some doen't even have function key...)
         // also check overlappig
@@ -294,4 +296,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
