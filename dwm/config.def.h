@@ -5,7 +5,7 @@
 /* Constants : Using preprocessor */
 #define TERMINAL "st"
 #define TERMCLASS "St"
-#define BROWSER "brave"
+#define BROWSER "firefox"
 #define BROWSERCLASS "Brave-browser"
 
 /* appearance */
@@ -24,10 +24,10 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
 
-#define ICONSIZE 18   /* icon size */
+#define ICONSIZE 20   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 
-static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=12",
+static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=13",
                                "Twemoji:size=11:antialias=true:autohint=true" };
 static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 
@@ -93,7 +93,7 @@ static const char *const autostart[] = {
 
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-// static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+// static const char *tags[] = { "", "", "", "", "", "嗢", "", "", "" };
 static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 static const char *alttags[] = { "", "", "", "", "", "", "", "", "" };
 
@@ -171,10 +171,11 @@ static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 
-static const char *brupcmd[] = { "brightnessctl", "s", "1%+", NULL };
-static const char *brdowncmd[] = { "brightnessctl", "s", "1%-", NULL };
+static const char *brupcmd[] = { "brightnessctl", "s", "3%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "s", "3%-", NULL };
 
-static const char *browsercmd[] = { "./.config/scripts/brave-launcher", NULL };
+// static const char *browsercmd[] = { "./.config/scripts/brave-launcher", NULL };
+static const char *browsercmd[] = { "/usr/bin/firefox", NULL };
 static const char *filemanagercmd[] = { "/usr/bin/thunar", NULL };
 static const char *codecmd[] = { "/usr/bin/code", NULL };
 static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
