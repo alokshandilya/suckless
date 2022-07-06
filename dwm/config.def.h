@@ -239,23 +239,22 @@ static Keychord keychords[] = {
 	{ 1, {{ MODKEY, XK_Tab }},                          view,           {0} },
 	{ 1, {{ MODKEY|ShiftMask, XK_q }},                  killclient,     {0} },
 	{ 1, {{ MODKEY, XK_t }},                            setlayout,      {.v = &layouts[0]} },
-
-	{ 1, {{ MODKEY, XK_f }},                   setlayout,      {.v = &layouts[1]} },
-	{ 1, {{ MODKEY, XK_m }},                   setlayout,      {.v = &layouts[2]} },
-	{ 1, {{ MODKEY|ControlMask, XK_comma }},   cyclelayout,    {.i = -1 } },
-	{ 1, {{ MODKEY|ControlMask, XK_period }},  cyclelayout,    {.i = +1 } },
-	{ 1, {{ MODKEY, XK_space }},               setlayout,      {0} },
-	{ 1, {{ MODKEY|ShiftMask, XK_space }},     togglefloating, {0} },
-	{ 1, {{ MODKEY|ShiftMask, XK_f }},         togglefullscr,  {0} },
-	{ 1, {{ MODKEY, XK_0 }},                   view,           {.ui = ~0 } },
-	{ 1, {{ MODKEY|ShiftMask, XK_0 }},         tag,            {.ui = ~0 } },
-	{ 1, {{ MODKEY, XK_comma }},               focusmon,       {.i = -1 } },
-	{ 1, {{ MODKEY, XK_period }},              focusmon,       {.i = +1 } },
-	{ 1, {{ MODKEY|ShiftMask, XK_comma }},     tagmon,         {.i = -1 } },
-	{ 1, {{ MODKEY|ShiftMask, XK_period }},    tagmon,         {.i = +1 } },
-	{ 1, {{ MODKEY|ControlMask, XK_s }},       show,           {0} },
-	{ 1, {{ MODKEY|ControlMask, XK_h }},       hide,           {0} },
-	{ 1, {{ MODKEY, XK_F5 }},                  xrdb,           {.v = NULL } },
+	{ 1, {{ MODKEY, XK_f }},                            setlayout,      {.v = &layouts[1]} },
+	{ 1, {{ MODKEY, XK_m }},                            setlayout,      {.v = &layouts[2]} },
+	{ 1, {{ MODKEY|ControlMask, XK_comma }},            cyclelayout,    {.i = -1 } },
+	{ 1, {{ MODKEY|ControlMask, XK_period }},           cyclelayout,    {.i = +1 } },
+	{ 1, {{ MODKEY, XK_space }},                        setlayout,      {0} },
+	{ 1, {{ MODKEY|ShiftMask, XK_space }},              togglefloating, {0} },
+	{ 1, {{ MODKEY|ShiftMask, XK_f }},                  togglefullscr,  {0} },
+	{ 1, {{ MODKEY, XK_0 }},                            view,           {.ui = ~0 } },
+	{ 1, {{ MODKEY|ShiftMask, XK_0 }},                  tag,            {.ui = ~0 } },
+	{ 1, {{ MODKEY, XK_comma }},                        focusmon,       {.i = -1 } },
+	{ 1, {{ MODKEY, XK_period }},                       focusmon,       {.i = +1 } },
+	{ 1, {{ MODKEY|ShiftMask, XK_comma }},              tagmon,         {.i = -1 } },
+	{ 1, {{ MODKEY|ShiftMask, XK_period }},             tagmon,         {.i = +1 } },
+	{ 1, {{ MODKEY|ControlMask, XK_s }},                show,           {0} },
+	{ 1, {{ MODKEY|ControlMask, XK_h }},                hide,           {0} },
+	{ 1, {{ MODKEY, XK_F5 }},                           xrdb,           {.v = NULL } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -265,8 +264,9 @@ static Keychord keychords[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ 1, {{ MODKEY|ControlMask, XK_q }},                quit,           {0} },
-	{ 1, {{ MODKEY|ControlMask|ShiftMask, XK_q }},      quit,           {1} },
+	{ 2, {{ MODKEY, XK_q }, { 0, XK_q }},               quit,           {0} },
+	{ 2, {{ MODKEY, XK_q }, { 0, XK_p }},               spawn,          SHCMD("poweroff") },
+	{ 2, {{ MODKEY, XK_q }, { 0, XK_r }},               quit,           {1} },
 
 	{ 1, {{ 0, XF86XK_AudioMute }},          spawn,     {.v = mutecmd } },
 	{ 1, {{ 0, XF86XK_AudioLowerVolume }},   spawn,     {.v = voldowncmd } },
