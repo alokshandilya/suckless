@@ -23,9 +23,11 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
+static const int horizpadbar        = 0;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 7;        /* vertical padding for statusbar */
 
-#define ICONSIZE 20   /* icon size */
-#define ICONSPACING 5 /* space between icon and title */
+#define ICONSIZE 21   /* icon size */
+#define ICONSPACING 6 /* space between icon and title */
 
 static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=13",
                                "Twemoji:size=11:antialias=true:autohint=true" };
