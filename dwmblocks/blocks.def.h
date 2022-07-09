@@ -3,15 +3,15 @@ static const Block blocks[] = {
     /*Icon*/       /*Command*/                         /*Update Interval*/     /*Update Signal*/
 
     // AWESOME FONTS :
-    {"^C5^ ﮮ  ^d^", "$HOME/.config/scripts/upt",         60,                     2},
-    {"^C3^   ^d^", "$HOME/.config/scripts/pacupdate",   360,                    5},
-    {"^C4^   ^d^", "$HOME/.config/scripts/weather",     60,                     1},
+    {"^C5^ ﮮ ^d^", "$HOME/.config/scripts/upt",         60,                     2},
+    {"^C3^  ^d^", "$HOME/.config/scripts/pacupdate",   360,                    5},
+    {"^C4^  ^d^", "$HOME/.config/scripts/weather",     60,                     1},
     // {"^C1^   ^d^", "$HOME/.config/scripts/kernel",      360,                    2},
-    {"^C6^   ^d^", "$HOME/.config/scripts/cpu",         2,                      1},
-    {"^C5^   ^d^", "$HOME/.config/scripts/memory",      6,                      1},
+    {"^C6^  ^d^", "$HOME/.config/scripts/cpu",         2,                      1},
+    {"^C5^ 瑱 ^d^", "$HOME/.config/scripts/memory",      6,                      1},
     {"^C3^   ^d^", "$HOME/.config/scripts/battery",     150,                    1},
-    {"^C4^   ^d^", "$HOME/.config/scripts/volume",      2,                      5},
-    {"^C1^   ^d^", "$HOME/.config/scripts/clock",       5,                      0},
+    {"^C4^  ^d^", "$HOME/.config/scripts/volume",      2,                      5},
+    {"^C1^  ^d^", "$HOME/.config/scripts/clock",       5,                      0},
 
     // ICONS [requires libxft-bgra]
     // {" 🔺 ",        "$HOME/.config/scripts/upt",         60,                     2},
