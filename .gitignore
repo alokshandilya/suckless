@@ -1,3 +1,5 @@
 dwm/config.h
 dwm/*.o
 dwm/dwm
+dwmblocks/dwmblocks
+dwmblocks/blocks.h
