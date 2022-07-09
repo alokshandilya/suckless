@@ -29,8 +29,8 @@ static const int vertpadbar         = 7;        /* vertical padding for statusba
 #define ICONSIZE 21   /* icon size */
 #define ICONSPACING 6 /* space between icon and title */
 
-static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=13",
-                               "Twemoji:size=11:antialias=true:autohint=true" };
+static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=14",
+                               "Twemoji:size=14:antialias=true:autohint=true" };
 static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 
 // GRUVBOX DARK
