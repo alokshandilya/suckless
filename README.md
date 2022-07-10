@@ -2,7 +2,7 @@
 
 ## About dwm 🐧
 
-dwm is an extremely fast, small, and dynamic window manager for X.
+dwm is an extremely fast, small and dynamic window manager for X.
 
 ## Requirements ✏️
 
@@ -22,3 +22,26 @@ cd suckless
 - `git clone` this repo and run `install.sh` ...
 > assuming you are on **Arch linux** or it's derivative
 
+## Patches 🧰
+
+- status2d
+- systray
+- xrdb
+- status2d-xrdb
+- cool-autostart
+- switchtotag
+- vanitygaps
+- cfacts
+- pertag
+- alwayscenter
+- cyclelayouts
+- ~~fancybar~~ awesomebar
+- winicon
+- movestack
+- scratchpad
+- actualfullscreen
+- alttagsdecoration
+- restartsig
+- keychord
+- statuspadding
+- ***maybe more I don't remember exactly...***
