@@ -32,3 +32,19 @@ cd ../st
 sudo make clean install
 cp -r ../.dwm ~/
 cd
+
+printf "\n"
+printf "#########################################\n"
+printf "##### Installing fonts and packages #####\n"
+printf "#########################################\n\n"
+paru -S libxft-bgra nerd-fonts-jetbrains-mono ttf-fira-code nerd-fonts-fira-code wget bat dash
+
+printf "\n"
+printf "##############################\n"
+printf "##### Installing lightdm #####\n"
+printf "##############################\n\n"
+paru -S lxappearance numlockx copyq conky feh bpytop ranger rofi nitrogen kvantum-qt5 kvantum-theme-materia qt5ct dunst thunar lightdm lightdm-webkit2-greeter lightdm-gtk-greeter
+sudo systemctl enable lightdm
+
+# polkit
+paru -S gnome-keyring lxsession
