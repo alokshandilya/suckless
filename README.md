@@ -35,7 +35,7 @@ cd suckless
 - pertag
 - alwayscenter
 - cyclelayouts
-- ~~fancybar~~ awesomebar
+- ~~fancybar~~ ~~awesomebar~~
 - winicon
 - movestack
 - scratchpad
@@ -44,4 +44,5 @@ cd suckless
 - restartsig
 - keychord
 - statuspadding
+- dwm-adjacenttag-skipvacant
 - ***maybe more I don't remember exactly...***
