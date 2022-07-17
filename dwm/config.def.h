@@ -261,6 +261,10 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY, XK_period }},                       focusmon,       {.i = +1 } },
   { 1, {{ MODKEY|ShiftMask, XK_comma }},              tagmon,         {.i = -1 } },
   { 1, {{ MODKEY|ShiftMask, XK_period }},             tagmon,         {.i = +1 } },
+  { 1, {{ MODKEY, XK_Right }},                        viewnext,       {0} },
+  { 1, {{ MODKEY, XK_Left }},                         viewprev,       {0} },
+  { 1, {{ MODKEY|ShiftMask, XK_Right }},              tagtonext,      {0} },
+  { 1, {{ MODKEY|ShiftMask, XK_Left }},               tagtoprev,      {0} },
   { 1, {{ MODKEY, XK_F5 }},                           xrdb,           {.v = NULL } },
   TAGKEYS(                        XK_1,                      0)
   TAGKEYS(                        XK_2,                      1)
