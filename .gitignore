@@ -3,3 +3,6 @@ dwm/*.o
 dwm/dwm
 dwmblocks/dwmblocks
 dwmblocks/blocks.h
+st/config.h
+st/st
+st/*.o
