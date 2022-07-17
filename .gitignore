@@ -1,8 +1,19 @@
+# dwm
 dwm/config.h
-dwm/*.o
+dwm/*orig
 dwm/dwm
+dwm/*.o
+dwm/config.h
+dwm/*.rej
+
+# dwmblocks
 dwmblocks/dwmblocks
 dwmblocks/blocks.h
+
+# st
 st/config.h
+st/*orig
 st/st
 st/*.o
+st/config.h
+st/*.rej
