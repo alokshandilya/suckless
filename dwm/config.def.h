@@ -92,13 +92,13 @@ static char *colors[][3] = {
 static const char *const autostart[] = {
   "sh", "-c", "/usr/bin/emacs --daemon", NULL,
   "./.fehbg", NULL,
-  "sh", "-c", "picom --config ~/.config/picom/picom.conf --experimental-backends", NULL,
+  "sh", "-c", "picom", NULL,
   "lxsession", NULL,
   "dunst", NULL,
   "xbanish", NULL,
   "numlockx", "on", NULL,
   "sh", "-c", "conky -c ~/.config/conky/gruvbox-material.conkyrc", NULL,
-  "sh", "-c", "~/Documents/GitHub/suckless/dwmblocks/dwmblocks", NULL,
+  "sh", "-c", "~/Documents/suckless/dwmblocks/dwmblocks", NULL,
   NULL // terminate
 };
 
