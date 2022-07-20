@@ -185,7 +185,7 @@ static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unm
 static const char *brupcmd[] = { "brightnessctl", "s", "3%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "s", "3%-", NULL };
 
-// static const char *browsercmd[] = { "./.config/scripts/brave-launcher", NULL };
+// static const char *browsercmd[] = { "~/.local/bin/scripts/brave-launcher", NULL };
 static const char *browsercmd[] = { "/usr/bin/firefox", NULL };
 static const char *filemanagercmd[] = { "/usr/bin/thunar", NULL };
 static const char *codecmd[] = { "/usr/bin/code", NULL };
@@ -210,6 +210,7 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
   { 1, {{ MODKEY, XK_v }},                            spawn,          {.v = codecmd } },
+  { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
   { 1, {{ MODKEY|ShiftMask, XK_v }},                  spawn,          {.v = volume_control } },
   // { 1, {{ MODKEY|ShiftMask, XK_e }},                  spawn,          {.v = ranger } },
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
