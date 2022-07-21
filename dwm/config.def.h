@@ -91,7 +91,6 @@ static char *colors[][3] = {
 
 static const char *const autostart[] = {
   "sh", "-c", "/usr/bin/emacs --daemon", NULL,
-  "./.fehbg", NULL,
   "sh", "-c", "picom", NULL,
   "lxsession", NULL,
   "dunst", NULL,
@@ -99,6 +98,7 @@ static const char *const autostart[] = {
   "numlockx", "on", NULL,
   "sh", "-c", "conky -c ~/.config/conky/gruvbox-material.conkyrc", NULL,
   "sh", "-c", "~/Documents/suckless/dwmblocks/dwmblocks", NULL,
+  "./.fehbg", NULL,
   NULL // terminate
 };
 
