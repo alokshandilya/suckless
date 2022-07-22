@@ -5,14 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=15:antialias=true:autohint=true";
-/* Spare fonts */
-static char *font2[] = {
-/*	"Inconsolata for Powerline:pixelsize=15:antialias=true:autohint=true", */
-	"JetBrainsMono Nerd Font:pixelsize=15:antialias=true:autohint=true",
-	"JetBrainsMono Nerd Font:pixelsize=15:antialias=true:autohint=true",
-};
-
+static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -64,12 +57,6 @@ static double minlatency = 8;
 static double maxlatency = 33;
 
 /*
- * Synchronized-Update timeout in ms
- * https://gitlab.com/gnachman/iterm2/-/wikis/synchronized-updates-spec
- */
-static uint su_timeout = 200;
-
-/*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
@@ -79,6 +66,18 @@ static unsigned int blinktimeout = 800;
  * thickness of underline and bar cursors
  */
 static unsigned int cursorthickness = 2;
+
+/*
+ * 1: render most of the lines/blocks characters without using the font for
+ *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
+ *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+ * 0: disable (render all U25XX glyphs normally from the font).
+ */
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
+
+/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+const int boxdraw_braille = 1;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -191,7 +190,7 @@ static uint forcemousemod = ShiftMask;
  */
 ResourcePref resources[] = {
   { "font",         STRING,  &font },
-  { "fontalt0",     STRING,  &font2[0] },
+  // { "fontalt0",     STRING,  &font2[0] },
   { "color0",       STRING,  &colorname[0] },
   { "color1",       STRING,  &colorname[1] },
   { "color2",       STRING,  &colorname[2] },
