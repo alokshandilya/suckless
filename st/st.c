@@ -247,33 +247,6 @@ static const uchar utfmask[UTF_SIZ + 1] = {0xC0, 0x80, 0xE0, 0xF0, 0xF8};
 static const Rune utfmin[UTF_SIZ + 1] = {       0,    0,  0x80,  0x800,  0x10000};
 static const Rune utfmax[UTF_SIZ + 1] = {0x10FFFF, 0x7F, 0x7FF, 0xFFFF, 0x10FFFF};
 
-#include <time.h>
-static int su = 0;
-struct timespec sutv;
-
-static void
-tsync_begin()
-{
-	clock_gettime(CLOCK_MONOTONIC, &sutv);
-	su = 1;
-}
-
-static void
-tsync_end()
-{
-	su = 0;
-}
-
-int
-tinsync(uint timeout)
-{
-	struct timespec now;
-	if (su && !clock_gettime(CLOCK_MONOTONIC, &now)
-	       && TIMEDIFF(now, sutv) >= timeout)
-		su = 0;
-	return su;
-}
-
 ssize_t
 xwrite(int fd, const char *s, size_t len)
 {
@@ -857,9 +830,6 @@ ttynew(const char *line, char *cmd, const char *out, char **args)
 	return cmdfd;
 }
 
-static int twrite_aborted = 0;
-int ttyread_pending() { return twrite_aborted; }
-
 size_t
 ttyread(void)
 {
@@ -868,7 +838,7 @@ ttyread(void)
 	int ret, written;
 
 	/* append read bytes to unprocessed bytes */
-	ret = twrite_aborted ? 1 : read(cmdfd, buf+buflen, LEN(buf)-buflen);
+	ret = read(cmdfd, buf+buflen, LEN(buf)-buflen);
 
 	switch (ret) {
 	case 0:
@@ -876,7 +846,7 @@ ttyread(void)
 	case -1:
 		die("couldn't read from shell: %s\n", strerror(errno));
 	default:
-		buflen += twrite_aborted ? 0 : ret;
+		buflen += ret;
 		written = twrite(buf, buflen, 0);
 		buflen -= written;
 		/* keep any incomplete UTF-8 byte sequence for the next call */
@@ -1042,7 +1012,6 @@ tsetdirtattr(int attr)
 void
 tfulldirt(void)
 {
-	tsync_end();
 	tsetdirt(0, term.row-1);
 }
 
@@ -1337,6 +1306,9 @@ tsetchar(Rune u, const Glyph *attr, int x, int y)
 	term.dirty[y] = 1;
 	line[x] = *attr;
 	line[x].u = u;
+
+	if (isboxdraw(u))
+		line[x].mode |= ATTR_BOXDRAW;
 }
 
 void
@@ -2074,12 +2046,6 @@ strhandle(void)
 		xsettitle(strescseq.args[0]);
 		return;
 	case 'P': /* DCS -- Device Control String */
-		/* https://gitlab.com/gnachman/iterm2/-/wikis/synchronized-updates-spec */
-		if (strstr(strescseq.buf, "=1s") == strescseq.buf)
-			tsync_begin();  /* BSU */
-		else if (strstr(strescseq.buf, "=2s") == strescseq.buf)
-			tsync_end();  /* ESU */
-		return;
 	case '_': /* APC -- Application Program Command */
 	case '^': /* PM -- Privacy Message */
 		return;
@@ -2630,9 +2596,6 @@ twrite(const char *buf, int buflen, int show_ctrl)
 		tfulldirt();
 	}
 
-	int su0 = su;
-	twrite_aborted = 0;
-
 	for (n = 0; n < buflen; n += charsize) {
 		if (IS_SET(MODE_UTF8)) {
 			/* process a complete utf8 char */
@@ -2642,10 +2605,6 @@ twrite(const char *buf, int buflen, int show_ctrl)
 		} else {
 			u = buf[n] & 0xFF;
 			charsize = 1;
-		}
-		if (su0 && !su) {
-			twrite_aborted = 1;
-			break;  // ESU - allow rendering before a new BSU
 		}
 		if (show_ctrl && ISCONTROL(u)) {
 			if (u & 0x80) {
@@ -2803,8 +2762,7 @@ draw(void)
 	drawregion(0, 0, term.col, term.row);
 	if (TSCREEN.off == 0)
 		xdrawcursor(cx, term.c.y, TLINE(term.c.y)[cx],
-				term.ocx, term.ocy, TLINE(term.ocy)[term.ocx],
-				TLINE(term.ocy), term.col);
+				term.ocx, term.ocy, TLINE(term.ocy)[term.ocx]);
 	term.ocx = cx;
 	term.ocy = term.c.y;
 	xfinishdraw();
