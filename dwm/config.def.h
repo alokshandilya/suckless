@@ -31,22 +31,26 @@ static const int vertpadbar         = 7;        // vertical padding for statusba
 
 static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=14",
                                "Twemoji:size=14:antialias=true:autohint=true" };
-static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
+static const char dmenufont[] = "JetBrains Mono:style:bold:size=11";
 
-// GRUVBOX DARK
+// ##############################
+// ######## GRUVBOX DARK ########
+// ##############################
 static char normbgcolor[]           = "#1d2021";
 static char normbordercolor[]       = "#504945";
 static char normfgcolor[]           = "#D3BD97";
 static char selfgcolor[]            = "#89B482";
-static char selbordercolor[]        = "#89B482"; // used for dmenu too
+static char selbordercolor[]        = "#89B482";
 static char selbgcolor[]            = "#1d2021";
 
-// ONE DARK
+// ##########################
+// ######## ONE DARK ########
+// ##########################
 // static char normbgcolor[]           = "#282C34";
 // static char normbordercolor[]       = "#282C34";
 // static char normfgcolor[]           = "#ABB2BF";
 // static char selfgcolor[]            = "#61AFEF";
-// static char selbordercolor[]        = "#61afef"; // used for dmenu too
+// static char selbordercolor[]        = "#61afef";
 // static char selbgcolor[]            = "#282C34";
 
 static char termcol0[] = "#000000";  // black
@@ -105,8 +109,8 @@ static const char *const autostart[] = {
 // tagging
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "", "", "", "", "", "嗢", "", "", "" };
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
-static const char *alttags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "" };
+static const char *alttags[] = { "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 // xprop(1):
@@ -172,7 +176,8 @@ static const Layout layouts[] = {
 
 // commands
 static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char scratchpadname[] = "Alok's Playing Area-51 🏏";
 static const char *scratchpadcmd[] = { TERMINAL, "-t", scratchpadname, "-g", "135x34", NULL };
@@ -205,8 +210,8 @@ static Keychord keychords[] = {
   // modifier, key                                    function        argument
   { 1, {{ MODKEY, XK_Return }},                       spawn,          {.v = termcmd } },
   { 1, {{ MODKEY, XK_grave }},                        togglescratch,  {.v = scratchpadcmd } },
-  { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = dmenucmd } },
-  { 1, {{ MODKEY, XK_d }},                            spawn,          {.v = roficmd } },
+  { 1, {{ MODKEY, XK_d }},                            spawn,          {.v = dmenucmd } },
+  { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
   { 1, {{ MODKEY, XK_v }},                            spawn,          {.v = codecmd } },
