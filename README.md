@@ -8,8 +8,8 @@ dwm is an extremely fast, small and dynamic window manager for X.
 
 - `script` will grab dependencies (assuming you run `Arch Linux` or it's derivatives) and make, install suckless utilities.
 - In order to build dwm you need the _Xlib header files_.
-- [***libxft-bgra***](https://aur.archlinux.org/packages/libxft-bgra-git) for coloured emojis in suckless utilities.
-  - comment `iscol` in **drw.c**
+- ~~[***libxft-bgra***](https://aur.archlinux.org/packages/libxft-bgra-git) for coloured emojis in suckless utilities.~~
+  - ~~comment `iscol` in **drw.c**~~
 
 ## Installation 🎙️
 
@@ -24,25 +24,25 @@ cd suckless
 
 ## Patches 🧰
 
-- status2d
-- systray
-- xrdb
-- status2d-xrdb
-- cool-autostart
-- switchtotag
-- vanitygaps
-- cfacts
-- pertag
-- alwayscenter
-- cyclelayouts
-- ~~fancybar~~ ~~awesomebar~~
-- winicon
-- movestack
-- scratchpad
-- actualfullscreen
-- alttagsdecoration
-- restartsig
-- keychord
-- statuspadding
-- dwm-adjacenttag-skipvacant
-- ***maybe more I don't remember exactly...***
+- [x] status2d
+- [x] systray
+- [x] xrdb
+- [x] status2d-xrdb
+- [x] cool-autostart
+- [x] switchtotag
+- [x] preserveonrestart
+- [x] vanitygaps
+- [x] cfacts
+- [x] pertag
+- [x] alwayscenter
+- [x] cyclelayouts
+- [x] winicon
+- [x] movestack
+- [x] scratchpad
+- [x] actualfullscreen
+- [x] alttagsdecoration
+- [x] restartsig
+- [x] keychord
+- [x] statuspadding
+- [x] dwm-adjacenttag-skipvacant
+- ***maybe a few more ...***
