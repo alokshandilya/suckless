@@ -47,4 +47,5 @@ cd suckless
 - [x] keychord
 - [x] statuspadding
 - [x] dwm-adjacenttag-skipvacant
+- [x] fixborder
 - **_maybe a few more ..._**
