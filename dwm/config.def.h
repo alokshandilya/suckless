@@ -11,7 +11,7 @@
 // appearance
 static const unsigned int borderpx  = 2;        // border pixel of windows
 static const unsigned int snap      = 32;       // snap pixel
-static const unsigned int gappih    = 20;       // horiz inner gap between windows
+static const unsigned int gappih    = 10;       // horiz inner gap between windows
 static const unsigned int gappiv    = 10;       // vert inner gap between windows
 static const unsigned int gappoh    = 10;       // horiz outer gap between windows and screen edge
 static const unsigned int gappov    = 30;       // vert outer gap between windows and screen edge
@@ -29,8 +29,8 @@ static const int vertpadbar         = 7;        // vertical padding for statusba
 #define ICONSIZE 21     // icon size
 #define ICONSPACING 6   // space between icon and title
 
-static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=13",
-                               "Twemoji:size=13:antialias=true:autohint=true" };
+static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=14",
+                               "Twemoji:size=14:antialias=true:autohint=true" };
 static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 
 // ##############################
@@ -52,6 +52,16 @@ static char selbgcolor[]            = "#1d2021";
 // static char selfgcolor[]            = "#61AFEF";
 // static char selbordercolor[]        = "#61afef";
 // static char selbgcolor[]            = "#282C34";
+
+// ##############################
+// ######## TOKYO NIGHT ########
+// ##############################
+// static char normbgcolor[]           = "#1a1b26";
+// static char normbordercolor[]       = "#414868";
+// static char normfgcolor[]           = "#c0caf5";
+// static char selfgcolor[]            = "#7aa2f7";
+// static char selbordercolor[]        = "#7aa2f7";
+// static char selbgcolor[]            = "#1a1b26";
 
 static char termcol0[] = "#000000";  // black
 static char termcol1[] = "#ff0000";  // red
