@@ -48,4 +48,5 @@ cd suckless
 - [x] statuspadding
 - [x] dwm-adjacenttag-skipvacant
 - [x] fixborder
+- [x] noborder
 - **_maybe a few more ..._**
