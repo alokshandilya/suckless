@@ -30,7 +30,7 @@ static const int vertpadbar         = 7;        // vertical padding for statusba
 #define ICONSPACING 6   // space between icon and title
 
 static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=14",
-                               "Twemoji:size=14:antialias=true:autohint=true" };
+                               "Twemoji:size=10:antialias=true:autohint=true" };
 static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 
 // ##############################
@@ -292,7 +292,7 @@ static Keychord keychords[] = {
   TAGKEYS(                        XK_8,                      7)
   TAGKEYS(                        XK_9,                      8)
   { 2, {{ MODKEY, XK_q }, { 0, XK_x }},               quit,           {0} },
-  { 2, {{ MODKEY, XK_q }, { 0, XK_p }},               spawn,          SHCMD("poweroff") },
+  // { 2, {{ MODKEY, XK_q }, { 0, XK_p }},               spawn,          SHCMD("poweroff") },
   { 2, {{ MODKEY, XK_q }, { 0, XK_r }},               quit,           {1} },
 
   { 1, {{ 0, XF86XK_AudioMute }},          spawn,     {.v = mutecmd } },
