@@ -43,16 +43,6 @@ static char selfgcolor[]            = "#89B482";
 static char selbordercolor[]        = "#89B482";
 static char selbgcolor[]            = "#1d2021";
 
-// ##########################
-// ######## ONE DARK ########
-// ##########################
-// static char normbgcolor[]           = "#282C34";
-// static char normbordercolor[]       = "#282C34";
-// static char normfgcolor[]           = "#ABB2BF";
-// static char selfgcolor[]            = "#61AFEF";
-// static char selbordercolor[]        = "#61afef";
-// static char selbgcolor[]            = "#282C34";
-
 // ##############################
 // ######## TOKYO NIGHT ########
 // ##############################
