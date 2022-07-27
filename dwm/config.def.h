@@ -30,7 +30,7 @@ static const int vertpadbar         = 7;        // vertical padding for statusba
 #define ICONSPACING 6   // space between icon and title
 
 static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=14",
-                               "Twemoji:size=10:antialias=true:autohint=true" };
+                               "Twemoji:size=11:antialias=true:autohint=true" };
 static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 
 // ##############################
@@ -229,6 +229,7 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY|ShiftMask, XK_v }},                  spawn,          {.v = volume_control } },
   // { 1, {{ MODKEY|ShiftMask, XK_e }},                  spawn,          {.v = ranger } },
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
+  { 1, {{ MODKEY|ShiftMask, XK_n }},                  spawn,          SHCMD("neovide") },
   { 1, {{ 0, XK_Print }},                             spawn,          {.v = printscr_full } },
   { 1, {{ MODKEY|ControlMask, XK_l }},                spawn,          {.v = lockscreen } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          SHCMD("emacsclient -c -a 'emacs' --eval '(dashboard-refresh-buffer)'") },
@@ -291,9 +292,9 @@ static Keychord keychords[] = {
   TAGKEYS(                        XK_7,                      6)
   TAGKEYS(                        XK_8,                      7)
   TAGKEYS(                        XK_9,                      8)
-  { 2, {{ MODKEY, XK_q }, { 0, XK_x }},               quit,           {0} },
-  // { 2, {{ MODKEY, XK_q }, { 0, XK_p }},               spawn,          SHCMD("poweroff") },
-  { 2, {{ MODKEY, XK_q }, { 0, XK_r }},               quit,           {1} },
+  { 2, {{ MODKEY, XK_x }, { 0, XK_x }},               quit,           {0} },
+  { 2, {{ MODKEY, XK_x }, { 0, XK_p }},               spawn,          SHCMD("poweroff") },
+  { 2, {{ MODKEY, XK_x }, { 0, XK_r }},               quit,           {1} },
 
   { 1, {{ 0, XF86XK_AudioMute }},          spawn,     {.v = mutecmd } },
   { 1, {{ 0, XF86XK_AudioLowerVolume }},   spawn,     {.v = voldowncmd } },
