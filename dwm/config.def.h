@@ -6,7 +6,7 @@
 #define TERMINAL "st"
 #define TERMCLASS "St"
 #define BROWSER "firefox"
-#define BROWSERCLASS "Brave-browser"
+#define BROWSERCLASS "firefox"
 
 // appearance
 static const unsigned int borderpx  = 2;        // border pixel of windows
@@ -36,12 +36,12 @@ static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 // ##############################
 // ######## GRUVBOX DARK ########
 // ##############################
-// static char normbgcolor[]           = "#1d2021";
-// static char normbordercolor[]       = "#504945";
-// static char normfgcolor[]           = "#D3BD97";
-// static char selfgcolor[]            = "#89B482";
-// static char selbordercolor[]        = "#89B482";
-// static char selbgcolor[]            = "#1d2021";
+static char normbgcolor[]           = "#1d2021";
+static char normbordercolor[]       = "#504945";
+static char normfgcolor[]           = "#D3BD97";
+static char selfgcolor[]            = "#89B482";
+static char selbordercolor[]        = "#89B482";
+static char selbgcolor[]            = "#1d2021";
 
 // ##############################
 // ######## TOKYO NIGHT #########
@@ -56,12 +56,12 @@ static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 // ##########################
 // ######## ONE DARK ########
 // ##########################
-static char normbgcolor[]           = "#1E2127";
-static char normbordercolor[]       = "#3A3F4B";
-static char normfgcolor[]           = "#ABB2BF";
-static char selfgcolor[]            = "#61AFEF";
-static char selbordercolor[]        = "#61AFEF";
-static char selbgcolor[]            = "#1E2127";
+// static char normbgcolor[]           = "#1E2127";
+// static char normbordercolor[]       = "#3A3F4B";
+// static char normfgcolor[]           = "#ABB2BF";
+// static char selfgcolor[]            = "#61AFEF";
+// static char selbordercolor[]        = "#61AFEF";
+// static char selbgcolor[]            = "#1E2127";
 
 static char termcol0[] = "#000000";  // black
 static char termcol1[] = "#ff0000";  // red
@@ -118,10 +118,12 @@ static const char *const autostart[] = {
 };
 
 // tagging
-// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "", "", "", "", "", "嗢", "", "", "" };
+// static const char *alttags[] = { "", "", "", "", "", "嗢", "", "", "" };
 static const char *tags[] = { "", "", "", "", "", "", "" };
 static const char *alttags[] = { "", "", "", "", "", "", "" };
+// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
+// static const char *alttags[] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>" };
 
 static const Rule rules[] = {
 // xprop(1):
@@ -129,21 +131,20 @@ static const Rule rules[] = {
 // WM_NAME(STRING)  = title
 
   // class                 instance    title       tags mask     switchtotag      isfloating   monitor
-  { "Gimp",                NULL,       NULL,       1 << 5,       1,               0,           0 },
-  { "vlc",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
-  { "mpv",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
-  { "firefox",             NULL,       NULL,       1 << 0,       1,               0,           0 },
   { BROWSERCLASS,          NULL,       NULL,       1 << 0,       1,               0,           0 },
+  // { TERMCLASS,             NULL,       NULL,       1 << 1,       1,               0,           0 },
   { "Code",                NULL,       NULL,       1 << 1,       1,               0,           0 },
   { "jetbrains-idea-ce",   NULL,       NULL,       1 << 1,       1,               0,           0 },
   { "Emacs",               NULL,       NULL,       1 << 1,       1,               0,           0 },
-  // { TERMCLASS,             NULL,       NULL,       1 << 1,       1,               0,           0 },
   { "GitHub Desktop",      NULL,       NULL,       1 << 2,       1,               0,           0 },
   { "Rhythmbox",           NULL,       NULL,       1 << 3,       1,               0,           0 },
-  { "Mailspring",          NULL,       NULL,       1 << 6,       1,               0,           0 },
-  { "TelegramDesktop",     NULL,       NULL,       1 << 6,       1,               0,           0 },
   { "Soffice",             NULL,       NULL,       1 << 4,       1,               0,           0 },
   { "okular",              NULL,       NULL,       1 << 4,       1,               0,           0 },
+  { "Gimp",                NULL,       NULL,       1 << 5,       1,               0,           0 },
+  { "vlc",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
+  { "mpv",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
+  { "Mailspring",          NULL,       NULL,       1 << 6,       1,               0,           0 },
+  { "TelegramDesktop",     NULL,       NULL,       1 << 6,       1,               0,           0 },
 };
 
 // layout(s)
@@ -191,7 +192,7 @@ static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", normbgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char scratchpadname[] = "Alok's Playing Area-51 🏏";
-static const char *scratchpadcmd[] = { TERMINAL, "-t", scratchpadname, "-g", "135x34", NULL };
+static const char *scratchpadcmd[] = { TERMINAL, "-t", scratchpadname, "-g", "120x32", NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
@@ -202,7 +203,7 @@ static const char *brupcmd[] = { "brightnessctl", "s", "3%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "s", "3%-", NULL };
 
 // static const char *browsercmd[] = { "~/.local/bin/scripts/brave-launcher", NULL };
-static const char *browsercmd[] = { "/usr/bin/firefox", NULL };
+static const char *browsercmd[] = { BROWSER, NULL };
 static const char *filemanagercmd[] = { "/usr/bin/thunar", NULL };
 static const char *codecmd[] = { "/usr/bin/code", NULL };
 static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
