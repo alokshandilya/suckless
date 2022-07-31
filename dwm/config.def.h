@@ -36,15 +36,15 @@ static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
 // ##############################
 // ######## GRUVBOX DARK ########
 // ##############################
-static char normbgcolor[]           = "#1d2021";
-static char normbordercolor[]       = "#504945";
-static char normfgcolor[]           = "#D3BD97";
-static char selfgcolor[]            = "#89B482";
-static char selbordercolor[]        = "#89B482";
-static char selbgcolor[]            = "#1d2021";
+// static char normbgcolor[]           = "#1d2021";
+// static char normbordercolor[]       = "#504945";
+// static char normfgcolor[]           = "#D3BD97";
+// static char selfgcolor[]            = "#89B482";
+// static char selbordercolor[]        = "#89B482";
+// static char selbgcolor[]            = "#1d2021";
 
 // ##############################
-// ######## TOKYO NIGHT ########
+// ######## TOKYO NIGHT #########
 // ##############################
 // static char normbgcolor[]           = "#1a1b26";
 // static char normbordercolor[]       = "#414868";
@@ -52,6 +52,16 @@ static char selbgcolor[]            = "#1d2021";
 // static char selfgcolor[]            = "#7aa2f7";
 // static char selbordercolor[]        = "#7aa2f7";
 // static char selbgcolor[]            = "#1a1b26";
+
+// ##########################
+// ######## ONE DARK ########
+// ##########################
+static char normbgcolor[]           = "#1E2127";
+static char normbordercolor[]       = "#3A3F4B";
+static char normfgcolor[]           = "#ABB2BF";
+static char selfgcolor[]            = "#61AFEF";
+static char selbordercolor[]        = "#61AFEF";
+static char selbgcolor[]            = "#1E2127";
 
 static char termcol0[] = "#000000";  // black
 static char termcol1[] = "#ff0000";  // red
@@ -96,6 +106,7 @@ static char *colors[][3] = {
 static const char *const autostart[] = {
   "sh", "-c", "/usr/bin/emacs --daemon", NULL,
   "sh", "-c", "picom", NULL,
+  // "sh", "-c", "picom --config ~/.config/picom/picom-blur.conf --experimental-backends", NULL,
   "lxsession", NULL,
   "dunst", NULL,
   "xbanish", NULL,
