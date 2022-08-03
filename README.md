@@ -24,6 +24,13 @@ cd suckless
 
 > currently, i use standard dmenu package of `arch` repo
 
+## Screenshots 🌇
+
+![ScreenShot1](dwm/screenshots/dwm-1.png)
+
+![ScreenShot2](dwm/screenshots/dwm-2.png)
+
+
 ## Patches 🧰
 
 - [x] status2d
