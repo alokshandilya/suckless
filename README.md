@@ -49,4 +49,5 @@ cd suckless
 - [x] dwm-adjacenttag-skipvacant
 - [x] fixborder
 - [x] noborder
+- [x] hidevacanttag
 - **_maybe a few more ..._**
