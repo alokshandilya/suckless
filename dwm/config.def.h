@@ -7,6 +7,7 @@
 #define TERMCLASS "St"
 #define BROWSER "firefox"
 #define BROWSERCLASS "firefox"
+#define FILEMANAGER "pcmanfm"
 
 // appearance
 static const unsigned int borderpx  = 2;        // border pixel of windows
@@ -120,8 +121,8 @@ static const char *const autostart[] = {
 // tagging
 // static const char *tags[] = { "", "", "", "", "", "嗢", "", "", "" };
 // static const char *alttags[] = { "", "", "", "", "", "嗢", "", "", "" };
-static const char *tags[] = { "", "", "", "", "", "", "" };
-static const char *alttags[] = { "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "" , "", "" };
+static const char *alttags[] = { "", "", "", "", "", "", "", "", "" };
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
 // static const char *alttags[] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>" };
 
@@ -202,10 +203,8 @@ static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unm
 static const char *brupcmd[] = { "brightnessctl", "s", "3%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "s", "3%-", NULL };
 
-// static const char *browsercmd[] = { "~/.local/bin/scripts/brave-launcher", NULL };
 static const char *browsercmd[] = { BROWSER, NULL };
-static const char *filemanagercmd[] = { "/usr/bin/thunar", NULL };
-static const char *codecmd[] = { "/usr/bin/code", NULL };
+static const char *filemanagercmd[] = { FILEMANAGER, NULL };
 static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
 // static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
 // static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", NULL };
@@ -226,7 +225,6 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
-  { 1, {{ MODKEY, XK_v }},                            spawn,          {.v = codecmd } },
   { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
   { 1, {{ MODKEY|ShiftMask, XK_v }},                  spawn,          {.v = volume_control } },
   // { 1, {{ MODKEY|ShiftMask, XK_e }},                  spawn,          {.v = ranger } },
@@ -285,6 +283,7 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY|ShiftMask, XK_Right }},              tagtonext,      {0} },
   { 1, {{ MODKEY|ShiftMask, XK_Left }},               tagtoprev,      {0} },
   { 1, {{ MODKEY, XK_F5 }},                           xrdb,           {.v = NULL } },
+ 
   TAGKEYS(                        XK_1,                      0)
   TAGKEYS(                        XK_2,                      1)
   TAGKEYS(                        XK_3,                      2)
@@ -294,22 +293,20 @@ static Keychord keychords[] = {
   TAGKEYS(                        XK_7,                      6)
   TAGKEYS(                        XK_8,                      7)
   TAGKEYS(                        XK_9,                      8)
+ 
+  // for keyboard with no media keys (some doen't even have function key...)
   { 2, {{ MODKEY, XK_x }, { 0, XK_x }},               quit,           {0} },
   { 2, {{ MODKEY, XK_x }, { 0, XK_p }},               spawn,          SHCMD("poweroff") },
   { 2, {{ MODKEY, XK_x }, { 0, XK_r }},               quit,           {1} },
-
-  { 1, {{ 0, XF86XK_AudioMute }},          spawn,     {.v = mutecmd } },
-  { 1, {{ 0, XF86XK_AudioLowerVolume }},   spawn,     {.v = voldowncmd } },
-  { 1, {{ 0, XF86XK_AudioRaiseVolume }},   spawn,     {.v = volupcmd } },
-  { 1, {{ 0, XF86XK_MonBrightnessUp }},    spawn,     {.v = brupcmd } },
-  { 1, {{ 0, XF86XK_MonBrightnessDown }},  spawn,     {.v = brdowncmd } },
-
-  // for keyboard with no media keys (some doen't even have function key...)
-  // also check overlappig
-  // { MODKEY|ControlMask,         XK_h,       spawn,      {.v = voldowncmd } },
-  // { MODKEY|ControlMask,         XK_l,       spawn,      {.v = volupcmd } },
-  // { MODKEY|ControlMask,         XK_x,       spawn,      {.v = brupcmd} },
-  // { MODKEY|ControlMask,         XK_z,       spawn,      {.v = brdowncmd } },
+  { 1, {{ MODKEY|ControlMask, XK_l }},                spawn,          {.v = brupcmd } },
+  { 1, {{ MODKEY|ControlMask, XK_h }},                spawn,          {.v = brdowncmd } },
+  { 1, {{ MODKEY|ControlMask, XK_k }},                spawn,          {.v = volupcmd } },
+  { 1, {{ MODKEY|ControlMask, XK_j }},                spawn,          {.v = voldowncmd } },
+  { 1, {{ 0, XF86XK_AudioMute }},                     spawn,          {.v = mutecmd } },
+  { 1, {{ 0, XF86XK_AudioLowerVolume }},              spawn,          {.v = voldowncmd } },
+  { 1, {{ 0, XF86XK_AudioRaiseVolume }},              spawn,          {.v = volupcmd } },
+  { 1, {{ 0, XF86XK_MonBrightnessUp }},               spawn,          {.v = brupcmd } },
+  { 1, {{ 0, XF86XK_MonBrightnessDown }},             spawn,          {.v = brdowncmd } },
 };
 
 // button definitions
