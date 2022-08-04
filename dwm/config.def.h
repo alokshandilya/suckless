@@ -105,10 +105,6 @@ static char *colors[][3] = {
 };
 
 static const char *const autostart[] = {
-  "sh", "-c", "/usr/bin/emacs --daemon", NULL,
-  "sh", "-c", "picom", NULL,
-  // "sh", "-c", "picom --config ~/.config/picom/picom-blur.conf --experimental-backends", NULL,
-  "lxsession", NULL,
   "dunst", NULL,
   "xbanish", NULL,
   "numlockx", "on", NULL,
