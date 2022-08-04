@@ -6,4 +6,11 @@ copyq &
 # fedora
 #/usr/libexec/polkit-gnome-authentication-agent-1 &
 
+# arch
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# conky -c ~/.config/conky/gruvbox-material.conkyrc &
+./.fehbg &
+# /usr/bin/emacs --daemon &
+nm-applet &
+
 dwm
