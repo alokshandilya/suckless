@@ -108,7 +108,6 @@ static const char *const autostart[] = {
   "dunst", NULL,
   "xbanish", NULL,
   "numlockx", "on", NULL,
-  "sh", "-c", "conky -c ~/.config/conky/gruvbox-material.conkyrc", NULL,
   "sh", "-c", "~/Documents/suckless/dwmblocks/dwmblocks", NULL,
   // "picom --config ~/.config/picom/picom-blur.conf --experimental-backends", NULL,
   "picom", NULL,
