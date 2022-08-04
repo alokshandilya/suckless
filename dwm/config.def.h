@@ -114,7 +114,8 @@ static const char *const autostart[] = {
   "numlockx", "on", NULL,
   "sh", "-c", "conky -c ~/.config/conky/gruvbox-material.conkyrc", NULL,
   "sh", "-c", "~/Documents/suckless/dwmblocks/dwmblocks", NULL,
-  "./.fehbg", NULL,
+  // "picom --config ~/.config/picom/picom-blur.conf --experimental-backends", NULL,
+  "picom", NULL,
   NULL // terminate
 };
 
@@ -142,8 +143,8 @@ static const Rule rules[] = {
   { "Soffice",             NULL,       NULL,       1 << 4,       1,               0,           0 },
   { "okular",              NULL,       NULL,       1 << 4,       1,               0,           0 },
   { "Gimp",                NULL,       NULL,       1 << 5,       1,               0,           0 },
-  { "vlc",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
-  { "mpv",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
+  // { "vlc",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
+  // { "mpv",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
   { "Mailspring",          NULL,       NULL,       1 << 6,       1,               0,           0 },
   { "TelegramDesktop",     NULL,       NULL,       1 << 6,       1,               0,           0 },
 };
@@ -213,8 +214,6 @@ static const char *bpytop[] = { TERMINAL, "-e", "bpytop", NULL };
 
 static const char *printscr_full[] = { "spectacle", NULL };
 static const char *lockscreen[] = { "betterlockscreen", "-l", "blur", NULL };
-// static const char *poweroffcmd[] = { "poweroff", NULL };
-// static const char *rebootcmd[] =  { "systemctl", "reboot", NULL };
 
 #include "movestack.c"
 static Keychord keychords[] = {
