@@ -107,7 +107,6 @@ static char *colors[][3] = {
 static const char *const autostart[] = {
   "dunst", NULL,
   "xbanish", NULL,
-  "numlockx", "on", NULL,
   "sh", "-c", "~/Documents/suckless/dwmblocks/dwmblocks", NULL,
   // "picom --config ~/.config/picom/picom-blur.conf --experimental-backends", NULL,
   "picom", NULL,
@@ -225,7 +224,7 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
   { 1, {{ MODKEY|ShiftMask, XK_n }},                  spawn,          SHCMD("neovide") },
   { 1, {{ 0, XK_Print }},                             spawn,          {.v = printscr_full } },
-  { 1, {{ MODKEY|ControlMask, XK_l }},                spawn,          {.v = lockscreen } },
+  { 1, {{ MODKEY|ControlMask, XK_x }},                spawn,          {.v = lockscreen } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          SHCMD("emacsclient -c -a 'emacs' --eval '(dashboard-refresh-buffer)'") },
   { 1, {{ MODKEY, XK_b }},                            togglebar,      {0} },
   { 1, {{ MODKEY, XK_j }},                            focusstack,     {.i = +1 } },
