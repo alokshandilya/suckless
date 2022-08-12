@@ -201,8 +201,8 @@ static const char *brdowncmd[] = { "brightnessctl", "s", "3%-", NULL };
 static const char *browsercmd[] = { BROWSER, NULL };
 static const char *filemanagercmd[] = { FILEMANAGER, NULL };
 static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
-// static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
-// static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", NULL };
+static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
+static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", NULL };
 
 static const char *bpytop[] = { TERMINAL, "-e", "bpytop", NULL };
 
@@ -218,14 +218,14 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
+  { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          {.v = nvimcmd } },
   { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
-  { 1, {{ MODKEY|ShiftMask, XK_v }},                  spawn,          {.v = volume_control } },
-  // { 1, {{ MODKEY|ShiftMask, XK_e }},                  spawn,          {.v = ranger } },
+  { 1, {{ MODKEY, XK_v }},                            spawn,          {.v = volume_control } },
+  { 2, {{ MODKEY, XK_e }, { 0, XK_r }},               spawn,          {.v = ranger } },
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
-  { 1, {{ MODKEY|ShiftMask, XK_n }},                  spawn,          SHCMD("neovide") },
   { 1, {{ 0, XK_Print }},                             spawn,          {.v = printscr_full } },
   { 1, {{ MODKEY|ControlMask, XK_x }},                spawn,          {.v = lockscreen } },
-  { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          SHCMD("emacsclient -c -a 'emacs' --eval '(dashboard-refresh-buffer)'") },
+  // { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          SHCMD("emacsclient -c -a 'emacs' --eval '(dashboard-refresh-buffer)'") },
   { 1, {{ MODKEY, XK_b }},                            togglebar,      {0} },
   { 1, {{ MODKEY, XK_j }},                            focusstack,     {.i = +1 } },
   { 1, {{ MODKEY, XK_k }},                            focusstack,     {.i = -1 } },
@@ -239,8 +239,8 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY|ShiftMask, XK_j }},                  movestack,      {.i = +1 } },
   { 1, {{ MODKEY|ShiftMask, XK_k }},                  movestack,      {.i = -1 } },
   { 1, {{ MODKEY|ShiftMask, XK_Return }},             zoom,           {0} },
-  { 1, {{ MODKEY|Mod4Mask, XK_u }},                   incrgaps,       {.i = +1 } },
-  { 1, {{ MODKEY|Mod4Mask|ShiftMask, XK_u }},         incrgaps,       {.i = -1 } },
+  { 1, {{ MODKEY, XK_u }},                            incrgaps,       {.i = +1 } },
+  { 1, {{ MODKEY|ShiftMask, XK_u }},                  incrgaps,       {.i = -1 } },
   { 1, {{ MODKEY|ControlMask, XK_i }},                incrigaps,      {.i = +1 } },
   { 1, {{ MODKEY|ControlMask|ShiftMask, XK_i }},      incrigaps,      {.i = -1 } },
   { 1, {{ MODKEY|ControlMask, XK_o }},                incrogaps,      {.i = +1 } },
