@@ -60,8 +60,8 @@ static char selbgcolor[]            = "#1d2021";
 // static char normbgcolor[]           = "#1E2127";
 // static char normbordercolor[]       = "#3A3F4B";
 // static char normfgcolor[]           = "#ABB2BF";
-// static char selfgcolor[]            = "#61AFEF";
-// static char selbordercolor[]        = "#61AFEF";
+// static char selfgcolor[]            = "#56b6c2";
+// static char selbordercolor[]        = "#56b6c2";
 // static char selbgcolor[]            = "#1E2127";
 
 static char termcol0[] = "#000000";  // black
@@ -220,6 +220,7 @@ static Keychord keychords[] = {
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          {.v = nvimcmd } },
   { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
+  { 2, {{ MODKEY, XK_n }, { 0, XK_j }},               spawn,          SHCMD("zathura ~/Dropbox/notes/pdf/note-1-dsa.pdf") },
   { 1, {{ MODKEY, XK_v }},                            spawn,          {.v = volume_control } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_r }},               spawn,          {.v = ranger } },
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
