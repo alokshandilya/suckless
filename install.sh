@@ -45,17 +45,19 @@ printf "#########################################\n\n"
 paru -S --needed libxft-bgra nerd-fonts-jetbrains-mono nerd-fonts-fira-code
 paru -S --needed wget bat dash ttf-fira-code ttf-jetbrains-mono
 
-printf "\n"
-printf "##############################\n"
-printf "##### Installing lightdm #####\n"
-printf "##############################\n\n"
-paru -S lxappearance numlockx copyq conky feh bpytop ranger rofi nitrogen kvantum-qt5 kvantum-theme-materia qt5ct dunst thunar lightdm lightdm-webkit2-greeter lightdm-gtk-greeter
+paru -S --needed lxappearance-gtk3 numlockx copyq conky feh bpytop ranger rofi picom kvantum-qt5 kvantum-theme-materia
+paru -S --needed qt5ct dunst pcmanfm ffmpegthumbnailer xarchiver redshift flameshot brightnessctl xsel
+
+# lightdm
+paru -S --needed lightdm lightdm-gtk-greeter
 sudo systemctl enable lightdm
 
 # polkit
-paru -S gnome-keyring lxsession
+paru -S --needed polkit-gnome gnome-keyring
 
-# lightdm entry
+##########################################
+##### Creating desktop entry for dwm #####
+##########################################
 printf "\n"
 printf "##########################################\n"
 printf "##### Creating desktop entry for dwm #####\n"
@@ -63,25 +65,25 @@ printf "##########################################\n\n"
 cd
 DIR="/usr/share/xsessions"
 if [ -d "$DIR" ]; then
-    FILE=/usr/share/xsessions/dwm.desktop
-    if [ -f "$FILE" ]; then
-        printf "$FILE exists\n"
-        sudo rm -rf /usr/share/xsessions/dwm.desktop
-    fi
-    sudo touch /usr/share/xsessions/dwm.desktop
-    echo "[Desktop Entry]" | sudo tee -a /usr/share/xsessions/dwm.desktop
-    echo "Encoding=UTF-8" | sudo tee -a /usr/share/xsessions/dwm.desktop
-    echo "Name=dwm" | sudo tee -a /usr/share/xsessions/dwm.desktop
-    echo "Comment=Dynamic Window Manager" | sudo tee -a /usr/share/xsessions/dwm.desktop
-    echo "Exec=~/.dwm/autostart" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  FILE=/usr/share/xsessions/dwm.desktop
+  if [ -f "$FILE" ]; then
+    printf "$FILE exists\n"
+    sudo rm -rf /usr/share/xsessions/dwm.desktop
+  fi
+  sudo touch /usr/share/xsessions/dwm.desktop
+  echo "[Desktop Entry]" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  echo "Encoding=UTF-8" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  echo "Name=dwm" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  echo "Comment=Dynamic Window Manager" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  echo "Exec=~/.dwm/autostart" | sudo tee -a /usr/share/xsessions/dwm.desktop
 else
-    sudo mkdir /usr/share/xsessions
-    sudo touch /usr/share/xsessions/dwm.desktop
-    echo "[Desktop Entry]" | sudo tee -a /usr/share/xsessions/dwm.desktop
-    echo "Encoding=UTF-8" | sudo tee -a /usr/share/xsessions/dwm.desktop
-    echo "Name=dwm" | sudo tee -a /usr/share/xsessions/dwm.desktop
-    echo "Comment=Dynamic Window Manager" | sudo tee -a /usr/share/xsessions/dwm.desktop
-    echo "Exec=~/.dwm/autostart" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  sudo mkdir /usr/share/xsessions
+  sudo touch /usr/share/xsessions/dwm.desktop
+  echo "[Desktop Entry]" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  echo "Encoding=UTF-8" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  echo "Name=dwm" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  echo "Comment=Dynamic Window Manager" | sudo tee -a /usr/share/xsessions/dwm.desktop
+  echo "Exec=~/.dwm/autostart" | sudo tee -a /usr/share/xsessions/dwm.desktop
 fi
 
 printf "\n"
