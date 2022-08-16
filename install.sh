@@ -5,26 +5,28 @@
 ########################################
 if ! command -v paru &> /dev/null
 then
-    printf "\n"
-    printf "########################################\n"
-    printf "##### Installing paru (AUR Helper) #####\n"
-    printf "########################################\n\n"
-    git clone https://aur.archlinux.org/paru-bin.git
-    cd paru-bin
-    makepkg -si
+  printf "\n"
+  printf "########################################\n"
+  printf "##### Installing paru (AUR Helper) #####\n"
+  printf "########################################\n\n"
+  git clone https://aur.archlinux.org/paru-bin.git
+  cd paru-bin
+  makepkg -si
 else
-    printf "\n"
-    printf "#######################################\n"
-    printf "###### paru is already installed ######\n"
-    printf "#######################################\n"
+  printf "\n"
+  printf "#######################################\n"
+  printf "###### paru is already installed ######\n"
+  printf "#######################################\n"
 fi
 
 printf "\n"
 printf "#########################################\n"
 printf "##### Installing suckless utilities #####\n"
 printf "#########################################\n\n"
-git clone https://github.com/alokshandilya/suckless.git
-cd suckless/dwm
+paru -S gd
+mkdir ~/Documents
+git clone https://github.com/alokshandilya/suckless.git ~/Documents/suckless
+cd ~/Documents/suckless/dwm
 sudo make clean install
 cd ../dwmblocks
 sudo make clean install
@@ -33,11 +35,15 @@ sudo make clean install
 cp -r ../.dwm ~/
 cd
 
+#########################################
+##### Installing fonts and packages #####
+#########################################
 printf "\n"
 printf "#########################################\n"
 printf "##### Installing fonts and packages #####\n"
 printf "#########################################\n\n"
-paru -S libxft-bgra nerd-fonts-jetbrains-mono ttf-fira-code nerd-fonts-fira-code wget bat dash
+paru -S --needed libxft-bgra nerd-fonts-jetbrains-mono nerd-fonts-fira-code
+paru -S --needed wget bat dash ttf-fira-code ttf-jetbrains-mono
 
 printf "\n"
 printf "##############################\n"
