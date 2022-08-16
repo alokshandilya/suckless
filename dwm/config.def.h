@@ -206,7 +206,8 @@ static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", NULL };
 
 static const char *bpytop[] = { TERMINAL, "-e", "bpytop", NULL };
 
-static const char *printscr_full[] = { "spectacle", NULL };
+// static const char *printscr_full[] = { "flameshot", "full", "-d", "2000", NULL };
+static const char *printscr_full[] = { "flameshot", "gui", NULL };
 static const char *lockscreen[] = { "betterlockscreen", "-l", "blur", NULL };
 
 #include "movestack.c"
