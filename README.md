@@ -8,8 +8,8 @@ dwm is an extremely fast, small and dynamic window manager for X.
 
 - `script` will grab dependencies (assuming you run `Arch Linux` or it's derivatives) and make, install suckless utilities.
 - In order to build dwm you need the _Xlib header files_.
-- ~~[**_libxft-bgra_**](https://aur.archlinux.org/packages/libxft-bgra-git) for coloured emojis in suckless utilities.~~
-  - ~~comment `iscol` in **drw.c**~~
+- [**_libxft-bgra_**](https://aur.archlinux.org/packages/libxft-bgra-git) for coloured emojis in suckless utilities.
+  - comment `FcBool iscol` in **drw.c**
 
 ## Installation 🎙️
 
