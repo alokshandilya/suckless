@@ -195,6 +195,9 @@ static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL
 static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
 
+static const char *nightLight[] = { "redshift", "-l", "22:77", NULL };
+static const char *nightLightOff[] = { "killall", "redshift", NULL };
+
 static const char *brupcmd[] = { "brightnessctl", "s", "3%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "s", "3%-", NULL };
 
@@ -222,6 +225,8 @@ static Keychord keychords[] = {
   { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          {.v = nvimcmd } },
   { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
   { 2, {{ MODKEY, XK_n }, { 0, XK_j }},               spawn,          SHCMD("zathura ~/Dropbox/notes/pdf/note-1-dsa.pdf") },
+  { 2, {{ MODKEY, XK_r }, { 0, XK_s }},               spawn,          {.v = nightLight } },
+  { 2, {{ MODKEY, XK_r }, { 0, XK_e }},               spawn,          {.v = nightLightOff } },
   { 1, {{ MODKEY, XK_v }},                            spawn,          {.v = volume_control } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_r }},               spawn,          {.v = ranger } },
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
