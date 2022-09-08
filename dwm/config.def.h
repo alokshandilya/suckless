@@ -221,6 +221,8 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY, XK_d }},                            spawn,          {.v = dmenucmd } },
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
+  { 2, {{ MODKEY, XK_y }, { 0, XK_t }},               spawn,          SHCMD("firefox https://youtube.com/feed/subscriptions") },
+  { 2, {{ MODKEY, XK_g }, { 0, XK_h }},               spawn,          SHCMD("firefox https://github.com/alokshandilya") },
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          {.v = nvimcmd } },
   { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
