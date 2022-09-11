@@ -218,7 +218,8 @@ static Keychord keychords[] = {
   // modifier, key                                    function        argument
   { 1, {{ MODKEY, XK_Return }},                       spawn,          {.v = termcmd } },
   { 1, {{ MODKEY, XK_grave }},                        togglescratch,  {.v = scratchpadcmd } },
-  { 1, {{ MODKEY, XK_d }},                            spawn,          {.v = dmenucmd } },
+  { 2, {{ MODKEY, XK_d }, { 0, XK_m }},               spawn,          {.v = dmenucmd } },
+  { 2, {{ MODKEY, XK_d }, { 0, XK_d }},               spawn,          SHCMD("mimeopen -n \"$(~/Documents/suckless/dmenu/scripts/dbrowse)\"") },
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
   { 2, {{ MODKEY, XK_y }, { 0, XK_t }},               spawn,          SHCMD("firefox https://youtube.com/feed/subscriptions") },
