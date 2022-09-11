@@ -17,3 +17,11 @@ st/st
 st/*.o
 st/config.h
 st/*.rej
+
+# dmenu
+dmenu/*.o
+dmenu/config.h
+dmenu/*.orig
+dmenu/*.rej
+dmenu/dmenu
+dmenu/stest
