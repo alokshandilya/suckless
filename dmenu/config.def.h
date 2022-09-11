@@ -4,13 +4,13 @@
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"JetBrains Mono:size=10"
+	"JetBrains Mono:style=extrabold:size=10"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
 	[SchemeNorm] = { "#d4be98", "#1d2021" },
-	[SchemeSel] = { "#d4be98", "#89b482" },
+	[SchemeSel] = { "#1d2021", "#89b482" },
 	[SchemeSelHighlight] = { "#89b482", "#1d2021" },
 	[SchemeNormHighlight] = { "#89b482", "#1d2021" },
 	[SchemeOut] = { "#d4be98", "#a9b665" },
