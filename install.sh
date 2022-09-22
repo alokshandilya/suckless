@@ -28,6 +28,8 @@ mkdir ~/Documents
 git clone https://github.com/alokshandilya/suckless.git ~/Documents/suckless
 cd ~/Documents/suckless/dwm
 sudo make clean install
+cd ../dmenu
+sudo make clean install
 cd ../dwmblocks
 sudo make clean install
 cd ../st
