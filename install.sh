@@ -44,7 +44,7 @@ printf "\n"
 printf "#########################################\n"
 printf "##### Installing fonts and packages #####\n"
 printf "#########################################\n\n"
-paru -S --needed libxft-bgra nerd-fonts-jetbrains-mono nerd-fonts-fira-code
+paru -S --needed libxft-bgra-git nerd-fonts-jetbrains-mono nerd-fonts-fira-code
 paru -S --needed wget bat dash ttf-fira-code ttf-jetbrains-mono
 
 paru -S --needed lxappearance-gtk3 numlockx copyq conky feh bpytop ranger rofi picom kvantum-qt5 kvantum-theme-materia
