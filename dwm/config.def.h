@@ -222,6 +222,7 @@ static Keychord keychords[] = {
   { 2, {{ MODKEY, XK_d }, { 0, XK_d }},               spawn,          SHCMD("mimeopen -n \"$(~/Documents/suckless/dmenu/scripts/dbrowse)\"") },
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
+  { 2, {{ MODKEY, XK_c }, { 0, XK_w }},               spawn,          SHCMD("feh --bg-fill -z ~/Pictures/wallpapers/nature") },
   { 2, {{ MODKEY, XK_y }, { 0, XK_t }},               spawn,          SHCMD("firefox https://youtube.com/feed/subscriptions") },
   { 2, {{ MODKEY, XK_g }, { 0, XK_h }},               spawn,          SHCMD("firefox https://github.com/alokshandilya") },
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
