@@ -110,16 +110,17 @@ static const char *const autostart[] = {
   "sh", "-c", "~/Documents/suckless/dwmblocks/dwmblocks", NULL,
   // "picom --config ~/.config/picom/picom-blur.conf --experimental-backends", NULL,
   "picom", NULL,
+  // "st", NULL,
   NULL // terminate
 };
 
 // tagging
 // static const char *tags[] = { "", "", "", "", "", "嗢", "", "", "" };
 // static const char *alttags[] = { "", "", "", "", "", "嗢", "", "", "" };
-static const char *tags[] = { "", "", "", "", "", "", "" , "", "" };
-static const char *alttags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "󰯫", "󰯮", "󰯱", "󰯴", "󰯷", "󰯺", "󰯽" , "󰰀", "󰰃" };
+static const char *alttags[] = { "󰬈", "󰬉", "󰬊", "󰬋", "󰬌", "󰬍", "󰬎", "󰬏", "󰬐" };
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
-// static const char *alttags[] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>" };
+// static const char *alttags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]" };
 
 static const Rule rules[] = {
 // xprop(1):
