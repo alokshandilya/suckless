@@ -193,8 +193,8 @@ static const char *scratchpadcmd[] = { TERMINAL, "-t", scratchpadname, "-g", "12
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 
 static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
-static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
 
 static const char *nightLight[] = { "redshift", "-l", "22:77", NULL };
 static const char *nightLightOff[] = { "killall", "redshift", NULL };
@@ -221,6 +221,11 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY, XK_grave }},                        togglescratch,  {.v = scratchpadcmd } },
   { 2, {{ MODKEY, XK_d }, { 0, XK_m }},               spawn,          {.v = dmenucmd } },
   { 2, {{ MODKEY, XK_d }, { 0, XK_d }},               spawn,          SHCMD("mimeopen -n \"$(~/Documents/suckless/dmenu/scripts/dbrowse)\"") },
+  { 2, {{ MODKEY, XK_y }, { 0, XK_v }},               spawn,          SHCMD("~/.local/bin/scripts/youtube-download-video.sh") },
+  { 2, {{ MODKEY, XK_y }, { 0, XK_p }},               spawn,          SHCMD("~/.local/bin/scripts/youtube-download-playlist.sh") },
+  { 1, {{ MODKEY, XK_a }},                            spawn,          SHCMD("~/.local/bin/scripts/app-launcher.sh") },
+  { 2, {{ MODKEY, XK_d }, { 0, XK_a }},               spawn,          SHCMD("firefox  https://www.youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V") },
+  { 2, {{ MODKEY, XK_c }, { 0, XK_m }},               spawn,          SHCMD("firefox  https://onlinecourses.nptel.ac.in/noc23_cs108/course?user_email=csm22010@tezu.ac.in") },
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
   { 2, {{ MODKEY, XK_c }, { 0, XK_w }},               spawn,          SHCMD("feh --bg-fill -z ~/Pictures/wallpapers/nature") },
@@ -229,15 +234,19 @@ static Keychord keychords[] = {
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          {.v = nvimcmd } },
   { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
-  { 2, {{ MODKEY, XK_n }, { 0, XK_j }},               spawn,          SHCMD("zathura ~/Dropbox/notes/pdf/note-1-dsa.pdf") },
+  { 2, {{ MODKEY, XK_n }, { 0, XK_j }},               spawn,          SHCMD("zathura ~/Dropbox/notes/pdf/note-2-dsa.pdf") },
+  { 2, {{ MODKEY, XK_n }, { 0, XK_h }},               spawn,          SHCMD("zathura ~/Documents/Programming/web-development/html/htmlcheatsheet.pdf") },
+  { 2, {{ MODKEY, XK_c }, { 0, XK_i }},               spawn,          SHCMD("firefox https://practice.geeksforgeeks.org/batch/cip-1") },
+  { 2, {{ MODKEY, XK_s }, { 0, XK_p }},               spawn,          SHCMD("env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify %U") },
   { 2, {{ MODKEY, XK_r }, { 0, XK_s }},               spawn,          {.v = nightLight } },
   { 2, {{ MODKEY, XK_r }, { 0, XK_e }},               spawn,          {.v = nightLightOff } },
-  { 1, {{ MODKEY, XK_v }},                            spawn,          {.v = volume_control } },
+  { 2, {{ MODKEY, XK_v }, { 0, XK_c }},               spawn,          SHCMD("code --password-store=gnome") },
+  { 2, {{ MODKEY, XK_v }, { 0, XK_v }},               spawn,          {.v = volume_control } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_r }},               spawn,          {.v = ranger } },
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
   { 1, {{ 0, XK_Print }},                             spawn,          {.v = printscr_full } },
   { 1, {{ MODKEY|ControlMask, XK_x }},                spawn,          {.v = lockscreen } },
-  // { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          SHCMD("emacsclient -c -a 'emacs' --eval '(dashboard-refresh-buffer)'") },
+//{ 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          SHCMD("emacsclient -c -a 'emacs' --eval '(dashboard-refresh-buffer)'") },
   { 1, {{ MODKEY, XK_b }},                            togglebar,      {0} },
   { 1, {{ MODKEY, XK_j }},                            focusstack,     {.i = +1 } },
   { 1, {{ MODKEY, XK_k }},                            focusstack,     {.i = -1 } },

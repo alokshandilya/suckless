@@ -14,7 +14,8 @@ static const Block blocks[] = {
 
   // ICONS [requires libxft-bgra]
   {" ✨ ",            "$HOME/.local/bin/dwmblocks/upt",         60,                     2},
-  // {" 📬 ",            "$HOME/.local/bin/dwmblocks/pacupdate",   300,                    9},
+  {" ",                "$HOME/.local/bin/scripts/network_speed.sh", 2,                   0},
+  {" 📬 ",            "$HOME/.local/bin/dwmblocks/pacupdate",   300,                    9},
   {" ⛈️ ",            "$HOME/.local/bin/dwmblocks/weather",     60,                     1},
   // {" 🐧 ",            "$HOME/.local/bin/dwmblocks/kernel",      360,                    2},
   {" 🗳️ ",            "$HOME/.local/bin/dwmblocks/cpu",         2,                      1},
