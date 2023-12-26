@@ -30,9 +30,9 @@ static const int vertpadbar         = 7;        // vertical padding for statusba
 #define ICONSIZE 21     // icon size
 #define ICONSPACING 6   // space between icon and title
 
-static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=14",
+static const char *fonts[] = { "JetBrainsMono NF:sytle:extrabold:size=10", "JetBrainsMono NFM:sytle:extrabold:size=14",
                                "Twemoji:size=11:antialias=true:autohint=true" };
-static const char dmenufont[] = "JetBrains Mono:style:extrabold:size=10";
+static const char dmenufont[] = "JetBrainsMono NF:style:extrabold:size=11";
 
 // ##############################
 // ######## GRUVBOX DARK ########
@@ -117,8 +117,8 @@ static const char *const autostart[] = {
 // tagging
 // static const char *tags[] = { "", "", "", "", "", "嗢", "", "", "" };
 // static const char *alttags[] = { "", "", "", "", "", "嗢", "", "", "" };
-static const char *tags[] = { "󰯫", "󰯮", "󰯱", "󰯴", "󰯷", "󰯺", "󰯽" , "󰰀", "󰰃" };
-static const char *alttags[] = { "󰬈", "󰬉", "󰬊", "󰬋", "󰬌", "󰬍", "󰬎", "󰬏", "󰬐" };
+static const char *tags[] = { "", "󰨞", "", "", "󰯷", "󰯺", "" , "󰰀", "󰰃" };
+static const char *alttags[] = { "", "󰨞", "", "", "󰬌", "󰬍", "", "󰬏", "󰬐" };
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
 // static const char *alttags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]" };
 
@@ -199,8 +199,8 @@ static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "2%-", "unm
 static const char *nightLight[] = { "redshift", "-l", "22:77", NULL };
 static const char *nightLightOff[] = { "killall", "redshift", NULL };
 
-static const char *brupcmd[] = { "brightnessctl", "s", "3%+", NULL };
-static const char *brdowncmd[] = { "brightnessctl", "s", "3%-", NULL };
+static const char *brupcmd[] = { "brightnessctl", "s", "1%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "s", "1%-", NULL };
 
 static const char *browsercmd[] = { BROWSER, NULL };
 static const char *filemanagercmd[] = { FILEMANAGER, NULL };
@@ -210,8 +210,8 @@ static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", NULL };
 
 static const char *bpytop[] = { TERMINAL, "-e", "bpytop", NULL };
 
-// static const char *printscr_full[] = { "flameshot", "full", "-d", "2000", NULL };
-static const char *printscr_full[] = { "flameshot", "gui", NULL };
+static const char *printscr_full[] = { "flameshot", "full", "-p", "/home/aloks/Pictures/new/", NULL };
+// static const char *printscr_full[] = { "flameshot", "gui", NULL };
 static const char *lockscreen[] = { "betterlockscreen", "-l", "blur", NULL };
 
 #include "movestack.c"
@@ -237,7 +237,8 @@ static Keychord keychords[] = {
   { 2, {{ MODKEY, XK_n }, { 0, XK_j }},               spawn,          SHCMD("zathura ~/Dropbox/notes/pdf/note-2-dsa.pdf") },
   { 2, {{ MODKEY, XK_n }, { 0, XK_h }},               spawn,          SHCMD("zathura ~/Documents/Programming/web-development/html/htmlcheatsheet.pdf") },
   { 2, {{ MODKEY, XK_c }, { 0, XK_i }},               spawn,          SHCMD("firefox https://practice.geeksforgeeks.org/batch/cip-1") },
-  { 2, {{ MODKEY, XK_s }, { 0, XK_p }},               spawn,          SHCMD("env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify %U") },
+  { 2, {{ MODKEY, XK_s }, { 0, XK_p }},               spawn,          SHCMD("spotify") },
+  { 2, {{ MODKEY, XK_b }, { 0, XK_m}},                spawn,          SHCMD("blueman-manager") },
   { 2, {{ MODKEY, XK_r }, { 0, XK_s }},               spawn,          {.v = nightLight } },
   { 2, {{ MODKEY, XK_r }, { 0, XK_e }},               spawn,          {.v = nightLightOff } },
   { 2, {{ MODKEY, XK_v }, { 0, XK_c }},               spawn,          SHCMD("code --password-store=gnome") },
@@ -247,7 +248,7 @@ static Keychord keychords[] = {
   { 1, {{ 0, XK_Print }},                             spawn,          {.v = printscr_full } },
   { 1, {{ MODKEY|ControlMask, XK_x }},                spawn,          {.v = lockscreen } },
 //{ 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          SHCMD("emacsclient -c -a 'emacs' --eval '(dashboard-refresh-buffer)'") },
-  { 1, {{ MODKEY, XK_b }},                            togglebar,      {0} },
+  { 2, {{ MODKEY, XK_b }, { 0, XK_b}},                togglebar,      {0} },
   { 1, {{ MODKEY, XK_j }},                            focusstack,     {.i = +1 } },
   { 1, {{ MODKEY, XK_k }},                            focusstack,     {.i = -1 } },
   { 1, {{ MODKEY, XK_i }},                            incnmaster,     {.i = +1 } },
