@@ -5,8 +5,8 @@
 // Constants : Using preprocessor
 #define TERMINAL "st"
 #define TERMCLASS "St"
-#define BROWSER "firefox"
-#define BROWSERCLASS "firefox"
+// #define BROWSER "brave"
+// #define BROWSERCLASS "Brave-browser"
 #define FILEMANAGER "pcmanfm"
 
 // appearance
@@ -30,9 +30,9 @@ static const int vertpadbar         = 7;        // vertical padding for statusba
 #define ICONSIZE 21     // icon size
 #define ICONSPACING 6   // space between icon and title
 
-static const char *fonts[] = { "JetBrainsMono NF:sytle:extrabold:size=10", "JetBrainsMono NFM:sytle:extrabold:size=14",
+static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=13",
                                "Twemoji:size=11:antialias=true:autohint=true" };
-static const char dmenufont[] = "JetBrainsMono NF:style:extrabold:size=11";
+static const char dmenufont[] = "JetBrainsMono Nerd Font:style:extrabold:size=10";
 
 // ##############################
 // ######## GRUVBOX DARK ########
@@ -115,10 +115,19 @@ static const char *const autostart[] = {
 };
 
 // tagging
-// static const char *tags[] = { "", "", "", "", "", "嗢", "", "", "" };
-// static const char *alttags[] = { "", "", "", "", "", "嗢", "", "", "" };
-static const char *tags[] = { "", "󰨞", "", "", "󰯷", "󰯺", "" , "󰰀", "󰰃" };
-static const char *alttags[] = { "", "󰨞", "", "", "󰬌", "󰬍", "", "󰬏", "󰬐" };
+
+// some nerd fonts :
+//                                      
+//                                      
+//                             󰊫 󰕼 and many more
+// and many more on https://www.nerdfonts.com/cheat-sheet
+
+// static const char *tags[] = { "", "", "", "", "", "󰕼", "", "", "" };
+// static const char *alttags[] = { "", "", "", "", "", "󰕼", "", "", "" };
+// static const char *tags[] = { "󰯫", "󰯮", "󰯱", "󰯴", "󰯷", "󰯺", "󰯽" , "󰰀", "󰰃" };
+// static const char *alttags[] = { "󰬈", "󰬉", "󰬊", "󰬋", "󰬌", "󰬍", "󰬎", "󰬏", "󰬐" };
+static const char *tags[] = { "󰎦", "󰎩", "󰎬", "󰎮", "󰎰", "󰎵", "󰎸" , "󰎻", "󰎾" };
+static const char *alttags[] = { "󰎤", "󰎧", "󰎪", "󰎭", "󰎱", "󰎳", "󰎶", "󰎹", "󰎼" };
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
 // static const char *alttags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]" };
 
@@ -128,20 +137,23 @@ static const Rule rules[] = {
 // WM_NAME(STRING)  = title
 
   // class                 instance    title       tags mask     switchtotag      isfloating   monitor
-  { BROWSERCLASS,          NULL,       NULL,       1 << 0,       1,               0,           0 },
+  // { BROWSERCLASS,          NULL,       NULL,       1 << 0,       1,               0,           0 },
+  { "Microsoft-edge",      NULL,       NULL,       1 << 0,       1,               0,           1 },
   // { TERMCLASS,             NULL,       NULL,       1 << 1,       1,               0,           0 },
-  { "Code",                NULL,       NULL,       1 << 1,       1,               0,           0 },
+  { "Code",                NULL,       NULL,       1 << 1,       1,               0,           1 },
+  { "kitty",               NULL,       NULL,       1 << 1,       1,               0,           0 },
   { "jetbrains-idea-ce",   NULL,       NULL,       1 << 1,       1,               0,           0 },
   { "Emacs",               NULL,       NULL,       1 << 1,       1,               0,           0 },
-  { "GitHub Desktop",      NULL,       NULL,       1 << 2,       1,               0,           0 },
-  { "Rhythmbox",           NULL,       NULL,       1 << 3,       1,               0,           0 },
+  { "GitHub Desktop",      NULL,       NULL,       1 << 3,       1,               0,           0 },
+  { "Spotify",             NULL,       NULL,       1 << 4,       1,               0,           0 },
+  { "Rhythmbox",           NULL,       NULL,       1 << 4,       1,               0,           0 },
   { "Soffice",             NULL,       NULL,       1 << 4,       1,               0,           0 },
   { "okular",              NULL,       NULL,       1 << 4,       1,               0,           0 },
   { "Gimp",                NULL,       NULL,       1 << 5,       1,               0,           0 },
   // { "vlc",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
   // { "mpv",                 NULL,       NULL,       1 << 5,       1,               0,           0 },
   { "Mailspring",          NULL,       NULL,       1 << 6,       1,               0,           0 },
-  { "TelegramDesktop",     NULL,       NULL,       1 << 6,       1,               0,           0 },
+  { "TelegramDesktop",     NULL,       NULL,       1 << 6,       1,               0,           1 },
 };
 
 // layout(s)
@@ -202,7 +214,7 @@ static const char *nightLightOff[] = { "killall", "redshift", NULL };
 static const char *brupcmd[] = { "brightnessctl", "s", "1%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "s", "1%-", NULL };
 
-static const char *browsercmd[] = { BROWSER, NULL };
+// static const char *browsercmd[] = { BROWSER, NULL };
 static const char *filemanagercmd[] = { FILEMANAGER, NULL };
 static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
 static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
@@ -227,7 +239,8 @@ static Keychord keychords[] = {
   { 2, {{ MODKEY, XK_d }, { 0, XK_a }},               spawn,          SHCMD("firefox  https://www.youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V") },
   { 2, {{ MODKEY, XK_c }, { 0, XK_m }},               spawn,          SHCMD("firefox  https://onlinecourses.nptel.ac.in/noc23_cs108/course?user_email=csm22010@tezu.ac.in") },
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
-  { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
+  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
+  { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-stable --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
   { 2, {{ MODKEY, XK_c }, { 0, XK_w }},               spawn,          SHCMD("feh --bg-fill -z ~/Pictures/wallpapers/nature") },
   { 2, {{ MODKEY, XK_y }, { 0, XK_t }},               spawn,          SHCMD("firefox https://youtube.com/feed/subscriptions") },
   { 2, {{ MODKEY, XK_g }, { 0, XK_h }},               spawn,          SHCMD("firefox https://github.com/alokshandilya") },
