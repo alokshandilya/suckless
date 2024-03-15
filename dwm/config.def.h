@@ -5,8 +5,8 @@
 // Constants : Using preprocessor
 #define TERMINAL "st"
 #define TERMCLASS "St"
-// #define BROWSER "brave"
-// #define BROWSERCLASS "Brave-browser"
+#define BROWSER "firefox"
+#define BROWSERCLASS "firefox"
 #define FILEMANAGER "pcmanfm"
 
 // appearance
@@ -37,12 +37,22 @@ static const char dmenufont[] = "JetBrainsMono Nerd Font:style:extrabold:size=10
 // ##############################
 // ######## GRUVBOX DARK ########
 // ##############################
-static char normbgcolor[]           = "#1d2021";
-static char normbordercolor[]       = "#504945";
-static char normfgcolor[]           = "#D3BD97";
-static char selfgcolor[]            = "#89B482";
-static char selbordercolor[]        = "#89B482";
-static char selbgcolor[]            = "#1d2021";
+// static char normbgcolor[]           = "#1d2021";
+// static char normbordercolor[]       = "#504945";
+// static char normfgcolor[]           = "#D3BD97";
+// static char selfgcolor[]            = "#89B482";
+// static char selbordercolor[]        = "#89B482";
+// static char selbgcolor[]            = "#1d2021";
+
+// ######################
+// ######## NORD ########
+// ######################
+static char normbgcolor[]           = "#2e3440";
+static char normbordercolor[]       = "#4c566a";
+static char normfgcolor[]           = "#d8dee9";
+static char selfgcolor[]            = "#88c0d0";
+static char selbordercolor[]        = "#81a1c1";
+static char selbgcolor[]            = "#2e3440";
 
 // ##############################
 // ######## TOKYO NIGHT #########
@@ -137,7 +147,7 @@ static const Rule rules[] = {
 // WM_NAME(STRING)  = title
 
   // class                 instance    title       tags mask     switchtotag      isfloating   monitor
-  // { BROWSERCLASS,          NULL,       NULL,       1 << 0,       1,               0,           0 },
+  { BROWSERCLASS,          NULL,       NULL,       1 << 0,       1,               0,           0 },
   { "Microsoft-edge",      NULL,       NULL,       1 << 0,       1,               0,           1 },
   // { TERMCLASS,             NULL,       NULL,       1 << 1,       1,               0,           0 },
   { "Code",                NULL,       NULL,       1 << 1,       1,               0,           1 },
@@ -240,7 +250,8 @@ static Keychord keychords[] = {
   { 2, {{ MODKEY, XK_c }, { 0, XK_m }},               spawn,          SHCMD("firefox  https://onlinecourses.nptel.ac.in/noc23_cs108/course?user_email=csm22010@tezu.ac.in") },
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
   // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
-  { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-stable --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
+  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-stable --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
+  { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("firefox") },
   { 2, {{ MODKEY, XK_c }, { 0, XK_w }},               spawn,          SHCMD("feh --bg-fill -z ~/Pictures/wallpapers/nature") },
   { 2, {{ MODKEY, XK_y }, { 0, XK_t }},               spawn,          SHCMD("firefox https://youtube.com/feed/subscriptions") },
   { 2, {{ MODKEY, XK_g }, { 0, XK_h }},               spawn,          SHCMD("firefox https://github.com/alokshandilya") },
