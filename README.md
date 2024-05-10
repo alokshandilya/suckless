@@ -51,6 +51,7 @@ cd suckless
 - [x] actualfullscreen
 - [x] alttagsdecoration
 - [x] restartsig
+- [x] restoreafterrestart
 - [x] keychord
 - [x] statuspadding
 - [x] dwm-adjacenttag-skipvacant
