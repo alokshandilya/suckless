@@ -10,6 +10,7 @@
 #define BROWSER "microsoft-edge-dev --password-store=gnome-libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --enable-zero-copy"
 #define BROWSERCLASS "microsoft-edge-dev"
 #define FILEMANAGER "pcmanfm"
+#define SESSION_FILE "/tmp/dwm-session"
 
 // appearance
 static const unsigned int borderpx  = 3;        // border pixel of windows
