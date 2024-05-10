@@ -5,8 +5,10 @@
 // Constants : Using preprocessor
 #define TERMINAL "st"
 #define TERMCLASS "St"
-#define BROWSER "firefox"
-#define BROWSERCLASS "firefox"
+// #define BROWSER "firefox"
+// #define BROWSERCLASS "firefox"
+#define BROWSER "microsoft-edge-dev --password-store=gnome-libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --enable-zero-copy"
+#define BROWSERCLASS "microsoft-edge-dev"
 #define FILEMANAGER "pcmanfm"
 
 // appearance
@@ -15,7 +17,7 @@ static const unsigned int snap      = 32;       // snap pixel
 static const unsigned int gappih    = 10;       // horiz inner gap between windows
 static const unsigned int gappiv    = 10;       // vert inner gap between windows
 static const unsigned int gappoh    = 10;       // horiz outer gap between windows and screen edge
-static const unsigned int gappov    = 30;       // vert outer gap between windows and screen edge
+static const unsigned int gappov    = 20;       // vert outer gap between windows and screen edge
 static       int smartgaps          = 1;        // 1 means no outer gap when there is only one window
 static const unsigned int systraypinning = 0;   // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X
 static const unsigned int systrayonleft = 0;    // 0: systray in the right corner, >0: systray on left of status text
@@ -37,22 +39,22 @@ static const char dmenufont[] = "JetBrainsMono Nerd Font:style:extrabold:size=10
 // ##############################
 // ######## GRUVBOX DARK ########
 // ##############################
-// static char normbgcolor[]           = "#1d2021";
-// static char normbordercolor[]       = "#504945";
-// static char normfgcolor[]           = "#D3BD97";
-// static char selfgcolor[]            = "#89B482";
-// static char selbordercolor[]        = "#89B482";
-// static char selbgcolor[]            = "#1d2021";
+static char normbgcolor[]           = "#1d2021";
+static char normbordercolor[]       = "#504945";
+static char normfgcolor[]           = "#D3BD97";
+static char selfgcolor[]            = "#89B482";
+static char selbordercolor[]        = "#89B482";
+static char selbgcolor[]            = "#1d2021";
 
 // ######################
 // ######## NORD ########
 // ######################
-static char normbgcolor[]           = "#2e3440";
-static char normbordercolor[]       = "#4c566a";
-static char normfgcolor[]           = "#d8dee9";
-static char selfgcolor[]            = "#88c0d0";
-static char selbordercolor[]        = "#81a1c1";
-static char selbgcolor[]            = "#2e3440";
+// static char normbgcolor[]           = "#2e3440";
+// static char normbordercolor[]       = "#4c566a";
+// static char normfgcolor[]           = "#d8dee9";
+// static char selfgcolor[]            = "#88c0d0";
+// static char selbordercolor[]        = "#81a1c1";
+// static char selbgcolor[]            = "#2e3440";
 
 // ##############################
 // ######## TOKYO NIGHT #########
@@ -240,32 +242,33 @@ static const char *lockscreen[] = { "betterlockscreen", "-l", "blur", NULL };
 static Keychord keychords[] = {
   // modifier, key                                    function        argument
   { 1, {{ MODKEY, XK_Return }},                       spawn,          {.v = termcmd } },
+  // { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
+  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave --ignore-gpu-blocklist --enable-features=TouchpadOverscrollHistoryNavigation,VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --password-store=gnome-libsecret --enable-zero-copy") },
+  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave-launcher") },
+  { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-dev --password-store=libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
   { 1, {{ MODKEY, XK_grave }},                        togglescratch,  {.v = scratchpadcmd } },
   { 2, {{ MODKEY, XK_d }, { 0, XK_m }},               spawn,          {.v = dmenucmd } },
   { 2, {{ MODKEY, XK_d }, { 0, XK_d }},               spawn,          SHCMD("mimeopen -n \"$(~/Documents/suckless/dmenu/scripts/dbrowse)\"") },
   { 2, {{ MODKEY, XK_y }, { 0, XK_v }},               spawn,          SHCMD("~/.local/bin/scripts/youtube-download-video.sh") },
   { 2, {{ MODKEY, XK_y }, { 0, XK_p }},               spawn,          SHCMD("~/.local/bin/scripts/youtube-download-playlist.sh") },
   { 1, {{ MODKEY, XK_a }},                            spawn,          SHCMD("~/.local/bin/scripts/app-launcher.sh") },
-  { 2, {{ MODKEY, XK_d }, { 0, XK_a }},               spawn,          SHCMD("firefox  https://www.youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V") },
-  { 2, {{ MODKEY, XK_c }, { 0, XK_m }},               spawn,          SHCMD("firefox  https://onlinecourses.nptel.ac.in/noc23_cs108/course?user_email=csm22010@tezu.ac.in") },
+  { 2, {{ MODKEY, XK_d }, { 0, XK_a }},               spawn,          SHCMD("$BROWSER https://www.youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V") },
+  { 2, {{ MODKEY, XK_c }, { 0, XK_m }},               spawn,          SHCMD("$BROWSER https://onlinecourses.nptel.ac.in/noc23_cs108/course?user_email=csm22010@tezu.ac.in") },
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
-  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
-  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-stable --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
-  { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("firefox") },
   { 2, {{ MODKEY, XK_c }, { 0, XK_w }},               spawn,          SHCMD("feh --bg-fill -z ~/Pictures/wallpapers/nature") },
-  { 2, {{ MODKEY, XK_y }, { 0, XK_t }},               spawn,          SHCMD("firefox https://youtube.com/feed/subscriptions") },
-  { 2, {{ MODKEY, XK_g }, { 0, XK_h }},               spawn,          SHCMD("firefox https://github.com/alokshandilya") },
+  { 2, {{ MODKEY, XK_y }, { 0, XK_t }},               spawn,          SHCMD("$BROWSER https://youtube.com/feed/subscriptions") },
+  { 2, {{ MODKEY, XK_g }, { 0, XK_h }},               spawn,          SHCMD("$BROWSER https://github.com/alokshandilya") },
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_e }},               spawn,          {.v = nvimcmd } },
   { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
   { 2, {{ MODKEY, XK_n }, { 0, XK_j }},               spawn,          SHCMD("zathura ~/Dropbox/notes/pdf/note-2-dsa.pdf") },
   { 2, {{ MODKEY, XK_n }, { 0, XK_h }},               spawn,          SHCMD("zathura ~/Documents/Programming/web-development/html/htmlcheatsheet.pdf") },
-  { 2, {{ MODKEY, XK_c }, { 0, XK_i }},               spawn,          SHCMD("firefox https://practice.geeksforgeeks.org/batch/cip-1") },
+  { 2, {{ MODKEY, XK_c }, { 0, XK_i }},               spawn,          SHCMD("$$BROWSER https://practice.geeksforgeeks.org/batch/cip-1") },
   { 2, {{ MODKEY, XK_s }, { 0, XK_p }},               spawn,          SHCMD("spotify") },
   { 2, {{ MODKEY, XK_b }, { 0, XK_m}},                spawn,          SHCMD("blueman-manager") },
   { 2, {{ MODKEY, XK_r }, { 0, XK_s }},               spawn,          {.v = nightLight } },
   { 2, {{ MODKEY, XK_r }, { 0, XK_e }},               spawn,          {.v = nightLightOff } },
-  { 2, {{ MODKEY, XK_v }, { 0, XK_c }},               spawn,          SHCMD("code --password-store=gnome") },
+  { 2, {{ MODKEY, XK_v }, { 0, XK_c }},               spawn,          SHCMD("code --password-store=gnome-libsecret") },
   { 2, {{ MODKEY, XK_v }, { 0, XK_v }},               spawn,          {.v = volume_control } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_r }},               spawn,          {.v = ranger } },
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
