@@ -5,10 +5,10 @@
 // Constants : Using preprocessor
 #define TERMINAL "st"
 #define TERMCLASS "St"
-// #define BROWSER "firefox"
-// #define BROWSERCLASS "firefox"
-#define BROWSER "microsoft-edge-dev --password-store=gnome-libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --enable-zero-copy"
-#define BROWSERCLASS "microsoft-edge-dev"
+#define BROWSER "firefox"
+#define BROWSERCLASS "firefox"
+// #define BROWSER "microsoft-edge-dev --password-store=gnome-libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --enable-zero-copy"
+// #define BROWSERCLASS "microsoft-edge-dev"
 #define FILEMANAGER "pcmanfm"
 #define SESSION_FILE "/tmp/dwm-session"
 
@@ -151,7 +151,8 @@ static const Rule rules[] = {
 
   // class                 instance    title       tags mask     switchtotag      isfloating   monitor
   { BROWSERCLASS,          NULL,       NULL,       1 << 0,       1,               0,           0 },
-  { "Microsoft-edge",      NULL,       NULL,       1 << 0,       1,               0,           1 },
+  // { "Microsoft-edge",      NULL,       NULL,       1 << 0,       1,               0,           1 },
+  { "firefox",             NULL,       NULL,       1 << 0,       1,               0,           1 },
   // { TERMCLASS,             NULL,       NULL,       1 << 1,       1,               0,           0 },
   { "Code",                NULL,       NULL,       1 << 1,       1,               0,           1 },
   { "kitty",               NULL,       NULL,       1 << 1,       1,               0,           0 },
@@ -227,7 +228,7 @@ static const char *nightLightOff[] = { "killall", "redshift", NULL };
 static const char *brupcmd[] = { "brightnessctl", "s", "1%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "s", "1%-", NULL };
 
-// static const char *browsercmd[] = { BROWSER, NULL };
+static const char *browsercmd[] = { BROWSER, NULL };
 static const char *filemanagercmd[] = { FILEMANAGER, NULL };
 static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
 static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
@@ -243,10 +244,10 @@ static const char *lockscreen[] = { "betterlockscreen", "-l", "blur", NULL };
 static Keychord keychords[] = {
   // modifier, key                                    function        argument
   { 1, {{ MODKEY, XK_Return }},                       spawn,          {.v = termcmd } },
-  // { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
+  { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
   // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave --ignore-gpu-blocklist --enable-features=TouchpadOverscrollHistoryNavigation,VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --password-store=gnome-libsecret --enable-zero-copy") },
   // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave-launcher") },
-  { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-dev --password-store=libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
+  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-dev --password-store=libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
   { 1, {{ MODKEY, XK_grave }},                        togglescratch,  {.v = scratchpadcmd } },
   { 2, {{ MODKEY, XK_d }, { 0, XK_m }},               spawn,          {.v = dmenucmd } },
   { 2, {{ MODKEY, XK_d }, { 0, XK_d }},               spawn,          SHCMD("mimeopen -n \"$(~/Documents/suckless/dmenu/scripts/dbrowse)\"") },
