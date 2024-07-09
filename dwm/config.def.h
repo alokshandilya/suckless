@@ -13,7 +13,7 @@
 #define SESSION_FILE "/tmp/dwm-session"
 
 // appearance
-static const unsigned int borderpx  = 3;        // border pixel of windows
+static const unsigned int borderpx  = 2;        // border pixel of windows
 static const unsigned int snap      = 32;       // snap pixel
 static const unsigned int gappih    = 10;       // horiz inner gap between windows
 static const unsigned int gappiv    = 10;       // vert inner gap between windows
@@ -33,9 +33,9 @@ static const int vertpadbar         = 7;        // vertical padding for statusba
 #define ICONSIZE 21     // icon size
 #define ICONSPACING 6   // space between icon and title
 
-static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=13",
+static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=9", "JetBrainsMono Nerd Font:sytle:extrabold:size=11",
                                "Twemoji:size=11:antialias=true:autohint=true" };
-static const char dmenufont[] = "JetBrainsMono Nerd Font:style:extrabold:size=10";
+static const char dmenufont[] = "JetBrainsMono Nerd Font:style:extrabold:size=9";
 
 // ##############################
 // ######## GRUVBOX DARK ########
