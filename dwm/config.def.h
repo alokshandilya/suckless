@@ -1,25 +1,25 @@
-// See LICENSE file for copyright and license details.
-
 #include <X11/XF86keysym.h>
 
-// Constants : Using preprocessor
+// Constants
 #define TERMINAL "st"
 #define TERMCLASS "St"
+// #define BROWSER "thorium-browser"
+// #define BROWSERCLASS "Thorium-browser"
+// #define BROWSER "microsoft-edge-stable"
+// #define BROWSERCLASS "microsoft-edge-stable"
 #define BROWSER "firefox"
-#define BROWSERCLASS "firefox"
-// #define BROWSER "microsoft-edge-dev --password-store=gnome-libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --enable-zero-copy"
-// #define BROWSERCLASS "microsoft-edge-dev"
-#define FILEMANAGER "thunar"
+#define BROWSERCLASS "Firefox"
+#define FILEMANAGER "pcmanfm"
 #define SESSION_FILE "/tmp/dwm-session"
 
-// appearance
+// Appearance settings
 static const unsigned int borderpx  = 2;        // border pixel of windows
 static const unsigned int snap      = 32;       // snap pixel
 static const unsigned int gappih    = 7;       // horiz inner gap between windows
 static const unsigned int gappiv    = 7;       // vert inner gap between windows
 static const unsigned int gappoh    = 7;       // horiz outer gap between windows and screen edge
 static const unsigned int gappov    = 21;       // vert outer gap between windows and screen edge
-static       int smartgaps          = 1;        // 1 means no outer gap when there is only one window
+static       int smartgaps          = 0;        // 1 means no outer gap when there is only one window
 static const unsigned int systraypinning = 0;   // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X
 static const unsigned int systrayonleft = 0;    // 0: systray in the right corner, >0: systray on left of status text
 static const unsigned int systrayspacing = 2;   // systray spacing
@@ -33,9 +33,9 @@ static const int vertpadbar         = 7;        // vertical padding for statusba
 #define ICONSIZE 21     // icon size
 #define ICONSPACING 6   // space between icon and title
 
-static const char *fonts[] = { "JetBrains Mono:sytle:extrabold:size=10", "JetBrainsMono Nerd Font:sytle:extrabold:size=14",
-                               "Twemoji:size=11:antialias=true:autohint=true" };
-static const char dmenufont[] = "JetBrainsMono Nerd Font:style:extrabold:size=10";
+static const char *fonts[] = { "Fira Code:sytle:extrabold:size=10", "FiraCode Nerd Font:sytle:extrabold:size=13",
+                               "Twemoji:size=10:antialias=true:autohint=true" };
+static const char dmenufont[] = "FiraCode Nerd Font:style:extrabold:size=10";
 
 // ##############################
 // ######## GRUVBOX DARK ########
@@ -123,26 +123,14 @@ static const char *const autostart[] = {
   "sh", "-c", "~/Documents/suckless/dwmblocks/dwmblocks", NULL,
   // "picom --config ~/.config/picom/picom-blur.conf --experimental-backends", NULL,
   "picom", NULL,
-  // "st", NULL,
+  "st", NULL,
   NULL // terminate
 };
 
 // tagging
 
-// some nerd fonts :
-//                                      
-//                                      
-//                             󰊫 󰕼 and many more
-// and many more on https://www.nerdfonts.com/cheat-sheet
-
-// static const char *tags[] = { "", "", "", "", "", "󰕼", "", "", "" };
-// static const char *alttags[] = { "", "", "", "", "", "󰕼", "", "", "" };
-// static const char *tags[] = { "󰯫", "󰯮", "󰯱", "󰯴", "󰯷", "󰯺", "󰯽" , "󰰀", "󰰃" };
-// static const char *alttags[] = { "󰬈", "󰬉", "󰬊", "󰬋", "󰬌", "󰬍", "󰬎", "󰬏", "󰬐" };
 static const char *tags[] = { "󰎦", "󰎩", "󰎬", "󰎮", "󰎰", "󰎵", "󰎸" , "󰎻", "󰎾" };
 static const char *alttags[] = { "󰎤", "󰎧", "󰎪", "󰎭", "󰎱", "󰎳", "󰎶", "󰎹", "󰎼" };
-// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7" };
-// static const char *alttags[] = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]" };
 
 static const Rule rules[] = {
 // xprop(1):
@@ -232,7 +220,7 @@ static const char *browsercmd[] = { BROWSER, NULL };
 static const char *filemanagercmd[] = { FILEMANAGER, NULL };
 static const char *volume_control[] = { "/usr/bin/pavucontrol", NULL };
 static const char *ranger[] = { TERMINAL, "-e", "ranger", NULL };
-static const char *nvimcmd[] = { TERMINAL, "-e", "nvim", NULL };
+static const char *nvimcmd[] = { TERMINAL, "-e", "lvim", NULL };
 
 static const char *bpytop[] = { TERMINAL, "-e", "bpytop", NULL };
 
@@ -247,17 +235,15 @@ static Keychord keychords[] = {
   { 1, {{ MODKEY, XK_w }},                            spawn,          {.v = browsercmd } },
   // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave --ignore-gpu-blocklist --enable-features=TouchpadOverscrollHistoryNavigation,VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --password-store=gnome-libsecret --enable-zero-copy") },
   // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("brave-launcher") },
-  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-dev --password-store=libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
+  // { 1, {{ MODKEY, XK_w }},                            spawn,          SHCMD("microsoft-edge-stable --password-store=libsecret --ignore-gpu-blocklist --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiVideoDecodeLinuxGL,VaapiIgnoreDriverChecks --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer") },
   { 1, {{ MODKEY, XK_grave }},                        togglescratch,  {.v = scratchpadcmd } },
   { 2, {{ MODKEY, XK_d }, { 0, XK_m }},               spawn,          {.v = dmenucmd } },
+  { 1, {{ MODKEY, XK_c }},                            spawn,          SHCMD("rofi -modi \"clipboard:greenclip print\" -show clipboard -run-command '{cmd}'") },
   { 2, {{ MODKEY, XK_d }, { 0, XK_d }},               spawn,          SHCMD("mimeopen -n \"$(~/Documents/suckless/dmenu/scripts/dbrowse)\"") },
   { 2, {{ MODKEY, XK_y }, { 0, XK_v }},               spawn,          SHCMD("~/.local/bin/scripts/youtube-download-video.sh") },
   { 2, {{ MODKEY, XK_y }, { 0, XK_p }},               spawn,          SHCMD("~/.local/bin/scripts/youtube-download-playlist.sh") },
   { 1, {{ MODKEY, XK_a }},                            spawn,          SHCMD("~/.local/bin/scripts/app-launcher.sh") },
-  { 2, {{ MODKEY, XK_d }, { 0, XK_a }},               spawn,          SHCMD("$BROWSER https://www.youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V") },
-  { 2, {{ MODKEY, XK_c }, { 0, XK_m }},               spawn,          SHCMD("$BROWSER https://onlinecourses.nptel.ac.in/noc23_cs108/course?user_email=csm22010@tezu.ac.in") },
   { 1, {{ MODKEY|ShiftMask, XK_d }},                  spawn,          {.v = roficmd } },
-  { 2, {{ MODKEY, XK_c }, { 0, XK_w }},               spawn,          SHCMD("feh --bg-fill -z ~/Pictures/wallpapers/nature") },
   { 2, {{ MODKEY, XK_y }, { 0, XK_t }},               spawn,          SHCMD("$BROWSER https://youtube.com/feed/subscriptions") },
   { 2, {{ MODKEY, XK_g }, { 0, XK_h }},               spawn,          SHCMD("$BROWSER https://github.com/alokshandilya") },
   { 2, {{ MODKEY, XK_e }, { 0, XK_f }},               spawn,          {.v = filemanagercmd } },
@@ -265,12 +251,11 @@ static Keychord keychords[] = {
   { 2, {{ MODKEY, XK_n }, { 0, XK_p }},               spawn,          SHCMD("ls -r ~/Dropbox/notes/pdf/*.pdf | head -n1 | xargs zathura") },
   { 2, {{ MODKEY, XK_n }, { 0, XK_j }},               spawn,          SHCMD("zathura ~/Dropbox/notes/pdf/note-2-dsa.pdf") },
   { 2, {{ MODKEY, XK_n }, { 0, XK_h }},               spawn,          SHCMD("zathura ~/Documents/Programming/web-development/html/htmlcheatsheet.pdf") },
-  { 2, {{ MODKEY, XK_c }, { 0, XK_i }},               spawn,          SHCMD("$$BROWSER https://practice.geeksforgeeks.org/batch/cip-1") },
   { 2, {{ MODKEY, XK_s }, { 0, XK_p }},               spawn,          SHCMD("spotify") },
   { 2, {{ MODKEY, XK_b }, { 0, XK_m}},                spawn,          SHCMD("blueman-manager") },
   { 2, {{ MODKEY, XK_r }, { 0, XK_s }},               spawn,          {.v = nightLight } },
   { 2, {{ MODKEY, XK_r }, { 0, XK_e }},               spawn,          {.v = nightLightOff } },
-  { 2, {{ MODKEY, XK_v }, { 0, XK_c }},               spawn,          SHCMD("code --password-store=gnome-libsecret") },
+  { 2, {{ MODKEY, XK_v }, { 0, XK_c }},               spawn,          SHCMD("code") },
   { 2, {{ MODKEY, XK_v }, { 0, XK_v }},               spawn,          {.v = volume_control } },
   { 2, {{ MODKEY, XK_e }, { 0, XK_r }},               spawn,          {.v = ranger } },
   { 1, {{ MODKEY|ShiftMask, XK_t }},                  spawn,          {.v = bpytop } },
